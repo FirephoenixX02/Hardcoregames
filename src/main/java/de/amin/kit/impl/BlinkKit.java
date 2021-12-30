@@ -2,7 +2,7 @@
 
 package de.amin.kit.impl;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitManager;
 import de.amin.kit.KitSetting;
@@ -21,21 +21,21 @@ import java.util.HashMap;
 
 public class BlinkKit extends Kit implements Listener {
 
-    private KitSetting distance;
-    private KitSetting cooldown;
-    private KitSetting uses;
+    private final KitSetting distance;
+    private final KitSetting cooldown;
+    private final KitSetting uses;
 
     private final KitManager kitManager;
-    private HashMap<String, Integer> blinkUses;
+    private final HashMap<String, Integer> blinkUses;
     private final HashMap<String, Long> cooldownList;
 
     public BlinkKit(){
         cooldown = new KitSetting(this, "cooldown", 15, 0, 100);
         distance = new KitSetting(this, "distance", 10, 1, 50);
         uses = new KitSetting(this, "uses", 3, 1, 100);
-        kitManager = HG.INSTANCE.getKitManager();
+        kitManager = SpeedHG.INSTANCE.getKitManager();
         blinkUses = new HashMap<>();
-        cooldownList = HG.INSTANCE.getCooldown();
+        cooldownList = SpeedHG.INSTANCE.getCooldown();
     }
 
     @Override
@@ -92,7 +92,7 @@ public class BlinkKit extends Kit implements Listener {
             Block b = p.getLocation().subtract(0,1,0).getBlock();
             Material m = b.getType();
             b.setType(Material.LEAVES);
-            Bukkit.getScheduler().scheduleSyncDelayedTask(HG.INSTANCE, new Runnable() {
+            Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedHG.INSTANCE, new Runnable() {
                 @Override
                 public void run() {
                     b.setType(m);

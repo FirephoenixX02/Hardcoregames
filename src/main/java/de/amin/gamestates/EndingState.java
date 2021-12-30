@@ -1,6 +1,6 @@
 package de.amin.gamestates;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import org.bukkit.*;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -13,40 +13,40 @@ public class EndingState extends GameState {
 
     @Override
     public void start() {
-        if (HG.INSTANCE.getPlayers().size() == 1) {
-            for (Player p : HG.INSTANCE.getPlayers()) {
+        if (SpeedHG.INSTANCE.getPlayers().size() == 1) {
+            for (Player p : SpeedHG.INSTANCE.getPlayers()) {
                 p.setVelocity(new Vector(0, 2, 0));
-                HG.INSTANCE.getStats().increment(p.getName(), "WINS");
+                SpeedHG.INSTANCE.getStats().increment(p.getName(), "WINS");
 
-                Bukkit.getScheduler().scheduleSyncRepeatingTask(HG.INSTANCE, () -> {
+                Bukkit.getScheduler().scheduleSyncRepeatingTask(SpeedHG.INSTANCE, () -> {
                     if (count < 5) {
                         p.getWorld().spawnEntity(p.getLocation(), EntityType.FIREWORK);
                         Bukkit.broadcastMessage("§a" + p.getName() + " WON!");
                     } else {
                         switch (count) {
                             case 5:
-                                Bukkit.broadcastMessage(HG.INSTANCE.PREFIX + "The Server will close in 10 seconds");
+                                Bukkit.broadcastMessage(SpeedHG.INSTANCE.PREFIX + "The Server will close in 10 seconds");
                                 break;
                             case 12:
-                                Bukkit.broadcastMessage(HG.INSTANCE.PREFIX + "The Server will close in 3 seconds");
+                                Bukkit.broadcastMessage(SpeedHG.INSTANCE.PREFIX + "The Server will close in 3 seconds");
                                 for (Player p1 : Bukkit.getOnlinePlayers()) {
                                     p1.playSound(p1.getLocation(), Sound.NOTE_BASS, 1.0F, 1.0F);
                                 }
                                 break;
                             case 13:
-                                Bukkit.broadcastMessage(HG.INSTANCE.PREFIX + "The Server will close in 2 seconds");
+                                Bukkit.broadcastMessage(SpeedHG.INSTANCE.PREFIX + "The Server will close in 2 seconds");
                                 for (Player p1 : Bukkit.getOnlinePlayers()) {
                                     p1.playSound(p1.getLocation(), Sound.NOTE_BASS, 1.0F, 1.0F);
                                 }
                                 break;
                             case 14:
-                                Bukkit.broadcastMessage(HG.INSTANCE.PREFIX + "The Server will close in 1 seconds");
+                                Bukkit.broadcastMessage(SpeedHG.INSTANCE.PREFIX + "The Server will close in 1 seconds");
                                 for (Player p1 : Bukkit.getOnlinePlayers()) {
                                     p1.playSound(p1.getLocation(), Sound.NOTE_BASS, 1.0F, 1.0F);
                                 }
                                 break;
                             case 15:
-                                HG.INSTANCE.getGameStateManager().stopCurrentGameState();
+                                SpeedHG.INSTANCE.getGameStateManager().stopCurrentGameState();
                                 break;
                             default:
                                 break;
@@ -58,9 +58,9 @@ public class EndingState extends GameState {
 
             }
         } else {
-            Bukkit.broadcastMessage(HG.INSTANCE.PREFIX + "§7There is no winner, because the game ended and more than one Player is alive!");
+            Bukkit.broadcastMessage(SpeedHG.INSTANCE.PREFIX + "§7There is no winner, because the game ended and more than one Player is alive!");
             count = 10;
-            Bukkit.getScheduler().scheduleSyncRepeatingTask(HG.INSTANCE, new Runnable() {
+            Bukkit.getScheduler().scheduleSyncRepeatingTask(SpeedHG.INSTANCE, new Runnable() {
                 @Override
                 public void run() {
                     switch (count) {
@@ -74,13 +74,13 @@ public class EndingState extends GameState {
                         case 3:
                         case 2:
                         case 1:
-                            Bukkit.broadcastMessage(HG.INSTANCE.PREFIX + "The Server will close in " + count + "seconds");
+                            Bukkit.broadcastMessage(SpeedHG.INSTANCE.PREFIX + "The Server will close in " + count + "seconds");
                             for (Player p : Bukkit.getOnlinePlayers()) {
                                 p.playSound(p.getLocation(), Sound.NOTE_BASS, 1.0F, 1.0F);
                             }
                             break;
                         case 0:
-                            HG.INSTANCE.getGameStateManager().stopCurrentGameState();
+                            SpeedHG.INSTANCE.getGameStateManager().stopCurrentGameState();
                             break;
                         default:
                             break;
@@ -96,7 +96,7 @@ public class EndingState extends GameState {
         for (Player p : Bukkit.getOnlinePlayers()) {
             p.kickPlayer("§8Server Restarting");
         }
-        Bukkit.getScheduler().scheduleSyncDelayedTask(HG.INSTANCE, new Runnable() {
+        Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedHG.INSTANCE, new Runnable() {
             @Override
             public void run() {
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "stop");

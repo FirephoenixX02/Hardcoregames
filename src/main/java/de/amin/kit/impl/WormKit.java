@@ -3,7 +3,7 @@ package de.amin.kit.impl;
 import de.amin.feast.Feast;
 import de.amin.gamestates.IngameState;
 import de.amin.gamestates.LobbyState;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitSetting;
 import de.amin.utils.ItemBuilder;
@@ -52,11 +52,11 @@ public class WormKit extends Kit implements Listener {
 
     @EventHandler
     public void onInteract(PlayerInteractEvent e){
-        if(HG.INSTANCE.getGameStateManager().getCurrentGameState() instanceof LobbyState)return;
-        if(!(HG.INSTANCE.getKitManager().getKitHashMap().get(e.getPlayer().getName()) instanceof  WormKit))return;
+        if(SpeedHG.INSTANCE.getGameStateManager().getCurrentGameState() instanceof LobbyState)return;
+        if(!(SpeedHG.INSTANCE.getKitManager().getKitHashMap().get(e.getPlayer().getName()) instanceof  WormKit))return;
         if(!e.getAction().equals(Action.LEFT_CLICK_BLOCK))return;
 
-        Feast feast = ((IngameState) HG.INSTANCE.getGameStateManager().getCurrentGameState()).getTimer().getFeast();
+        Feast feast = ((IngameState) SpeedHG.INSTANCE.getGameStateManager().getCurrentGameState()).getTimer().getFeast();
         if(Feast.isAnnounced() && !Feast.isFeast() && feast.getBlocks().contains(e.getClickedBlock()))return;
 
         if(e.getClickedBlock().getType().equals(Material.DIRT) || e.getClickedBlock().getType().equals(Material.GRASS)){
@@ -77,7 +77,7 @@ public class WormKit extends Kit implements Listener {
     @EventHandler
     public void onDamage(EntityDamageEvent e){
         if(!e.getEntityType().equals(EntityType.PLAYER))return;
-        if(!(HG.INSTANCE.getKitManager().getKitHashMap().get(e.getEntity().getName()) instanceof  WormKit))return;
+        if(!(SpeedHG.INSTANCE.getKitManager().getKitHashMap().get(e.getEntity().getName()) instanceof  WormKit))return;
         if(!e.getCause().equals(EntityDamageEvent.DamageCause.FALL))return;
         Player p = (Player) e.getEntity();
         Location loc = p.getLocation();

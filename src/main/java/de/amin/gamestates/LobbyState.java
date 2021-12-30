@@ -1,16 +1,16 @@
 package de.amin.gamestates;
 
 import de.amin.countdowns.LobbyCountdown;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
 public class LobbyState extends GameState{
 
-    public static final int MIN_PLAYERS = (int) HG.INSTANCE.getConfig().get("game.min_players");
+    public static final int MIN_PLAYERS = (int) SpeedHG.INSTANCE.getConfig().get("game.min_players");
 
-    private LobbyCountdown countdown;
+    private final LobbyCountdown countdown;
 
     public LobbyState(GameStateManager gameStateManager){
         countdown = new LobbyCountdown(gameStateManager);
@@ -23,9 +23,9 @@ public class LobbyState extends GameState{
 
     @Override
     public void stop() {
-        Bukkit.broadcastMessage(HG.INSTANCE.PREFIX + "§cThe tournament started. Good Luck!");
+        Bukkit.broadcastMessage(SpeedHG.INSTANCE.PREFIX + "§cThe tournament started. Good Luck!");
         countdown.stop();
-        for(Player p : HG.INSTANCE.getPlayers()){
+        for(Player p : SpeedHG.INSTANCE.getPlayers()){
             p.playSound(p.getLocation(), Sound.NOTE_PIANO, 1.0F, 1.0F);
         }
     }

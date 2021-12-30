@@ -2,7 +2,7 @@
 
 package de.amin.inventories;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitSetting;
 import de.amin.utils.AnvilGUI;
@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 public class KitSettingInventory implements InventoryProvider {
 
-    private Kit kit;
+    private final Kit kit;
 
     public KitSettingInventory(Kit kit){
         this.kit = kit;
@@ -36,7 +36,7 @@ public class KitSettingInventory implements InventoryProvider {
                 .provider(new KitSettingInventory(kit))
                 .size(3, 9)
                 .title(ChatColor.BLUE + "Kitsettings for " + kit.getName())
-                .manager(HG.INSTANCE.getInventoryManager())
+                .manager(SpeedHG.INSTANCE.getInventoryManager())
                 .build();
     }
 
@@ -60,11 +60,11 @@ public class KitSettingInventory implements InventoryProvider {
                 if(e.getClick().equals(ClickType.RIGHT) || e.getClick().equals(ClickType.SHIFT_RIGHT)){
                     setting.restoreDefault();
                     player.closeInventory();
-                    Bukkit.getScheduler().scheduleSyncDelayedTask(HG.INSTANCE, () -> {
+                    Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedHG.INSTANCE, () -> {
                         new KitSettingInventory(kit).getInventory().open(player);
                     }, 1);
                 }else {
-                    new AnvilGUI(HG.INSTANCE, player, new AnvilGUI.AnvilClickHandler() {
+                    new AnvilGUI(SpeedHG.INSTANCE, player, new AnvilGUI.AnvilClickHandler() {
                         @Override
                         public boolean onClick(AnvilGUI menu, String text){
                             double value = 0;
@@ -84,7 +84,7 @@ public class KitSettingInventory implements InventoryProvider {
                                 setting.setValue(value);
                                 player.sendMessage("§aSuccesfully changed value for Setting §6" + setting.getName() + " §ato §6" + value + "§a!");
                             }
-                            Bukkit.getScheduler().scheduleSyncDelayedTask(HG.INSTANCE, () -> {
+                            Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedHG.INSTANCE, () -> {
                                 new KitSettingInventory(kit).getInventory().open(player);
                             }, 1);
                             return true;

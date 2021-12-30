@@ -3,7 +3,7 @@ package de.amin.commands;
 import de.amin.gamestates.GameStateManager;
 import de.amin.gamestates.InvincibilityState;
 import de.amin.gamestates.LobbyState;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitManager;
 import de.amin.kit.impl.NoneKit;
@@ -19,12 +19,12 @@ import java.util.List;
 
 public class KitCommand implements CommandExecutor, TabCompleter {
 
-    private HG hg;
-    private KitManager km;
-    private GameStateManager gsm;
+    private final SpeedHG hg;
+    private final KitManager km;
+    private final GameStateManager gsm;
 
     public KitCommand() {
-        hg = HG.INSTANCE;
+        hg = SpeedHG.INSTANCE;
         km = hg.getKitManager();
         gsm = hg.getGameStateManager();
     }

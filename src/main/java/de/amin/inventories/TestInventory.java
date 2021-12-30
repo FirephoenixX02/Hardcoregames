@@ -2,7 +2,7 @@
 
 package de.amin.inventories;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.utils.ItemBuilder;
 import fr.minuskube.inv.ClickableItem;
 import fr.minuskube.inv.SmartInventory;
@@ -26,7 +26,7 @@ public class TestInventory implements InventoryProvider {
             .provider(new TestInventory())
             .size(6, 9)
             .title(ChatColor.BLUE + "Test")
-            .manager(HG.INSTANCE.getInventoryManager())
+            .manager(SpeedHG.INSTANCE.getInventoryManager())
             .build();
 
     @Override

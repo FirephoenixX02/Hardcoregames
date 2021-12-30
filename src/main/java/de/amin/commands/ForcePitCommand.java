@@ -4,7 +4,7 @@ package de.amin.commands;
 
 import de.amin.gamestates.GameStateManager;
 import de.amin.gamestates.IngameState;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.mechanics.Pit;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -13,10 +13,10 @@ import org.bukkit.command.CommandSender;
 
 public class ForcePitCommand implements CommandExecutor {
 
-    private final HG plugin;
+    private final SpeedHG plugin;
     private final GameStateManager gameStateManager;
 
-    public ForcePitCommand(HG plugin) {
+    public ForcePitCommand(SpeedHG plugin) {
         this.plugin = plugin;
         this.gameStateManager = plugin.getGameStateManager();
     }

@@ -2,7 +2,7 @@
 
 package de.amin.inventories;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitManager;
 import de.amin.utils.ItemBuilder;
@@ -20,7 +20,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class KitSelectorInventory implements InventoryProvider {
 
-    private final KitManager kitManager = HG.INSTANCE.getKitManager();
+    private final KitManager kitManager = SpeedHG.INSTANCE.getKitManager();
     private Pagination pagination;
 
     public static final SmartInventory INVENTORY = SmartInventory.builder()
@@ -28,7 +28,7 @@ public class KitSelectorInventory implements InventoryProvider {
             .provider(new KitSelectorInventory())
             .size(6, 9)
             .title(ChatColor.BLUE + "Kit Selector")
-            .manager(HG.INSTANCE.getInventoryManager())
+            .manager(SpeedHG.INSTANCE.getInventoryManager())
             .build();
 
     @Override

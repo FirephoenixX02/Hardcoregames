@@ -1,7 +1,7 @@
 package de.amin.mechanics;
 
 import de.amin.gamestates.LobbyState;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -16,7 +16,7 @@ public class RandomTP implements Listener {
     public static final String ITEM_NAME = "§6Random Teleport";
 
     public static void randomTeleport(Player p){
-        int bordersize = (int) HG.INSTANCE.getFileConfig().get("mechanics.bordersize");
+        int bordersize = (int) SpeedHG.INSTANCE.getFileConfig().get("mechanics.bordersize");
         int x = ThreadLocalRandom.current().nextInt(bordersize * -1,bordersize);
         int z = ThreadLocalRandom.current().nextInt(bordersize * -1,bordersize);
 
@@ -42,7 +42,7 @@ public class RandomTP implements Listener {
 
     @EventHandler
     public void onInteract(PlayerInteractEvent e){
-        if(!(HG.INSTANCE.getGameStateManager().getCurrentGameState() instanceof LobbyState))return;
+        if(!(SpeedHG.INSTANCE.getGameStateManager().getCurrentGameState() instanceof LobbyState))return;
         if(e.getItem()==null)return;
         if(!e.getItem().hasItemMeta())return;
         if(!e.getItem().getItemMeta().getDisplayName(). equals(ITEM_NAME)){

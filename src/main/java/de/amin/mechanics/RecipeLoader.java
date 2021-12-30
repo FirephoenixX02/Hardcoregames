@@ -8,7 +8,7 @@ import org.bukkit.inventory.ShapelessRecipe;
 
 public class RecipeLoader {
 
-    private KitManager kitManager;
+    private final KitManager kitManager;
     private ShapelessRecipe grassRecipe;
 
     public RecipeLoader(KitManager kitManager) {

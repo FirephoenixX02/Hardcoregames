@@ -2,7 +2,7 @@
 
 package de.amin.feast;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.KitManager;
 import de.amin.kit.impl.KangarooKit;
 import net.md_5.bungee.api.chat.ClickEvent;
@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Minifeast {
+public class OldMiniFeast {
 
     private YamlConfiguration config;
 
@@ -41,11 +41,11 @@ public class Minifeast {
     private final KitManager kitManager;
 
 
-    public Minifeast() {
-        FileConfiguration config = HG.INSTANCE.getFileConfig();
+    public OldMiniFeast() {
+        FileConfiguration config = SpeedHG.INSTANCE.getFileConfig();
         int bordersize = config.getInt("mechanics.bordersize");
 
-        kitManager = HG.INSTANCE.getKitManager();
+        kitManager = SpeedHG.INSTANCE.getKitManager();
 
         xPos = ThreadLocalRandom.current().nextInt(bordersize * -1 + radius, bordersize - radius);
         zPos = ThreadLocalRandom.current().nextInt(bordersize * -1 + radius, bordersize - radius);

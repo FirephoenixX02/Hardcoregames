@@ -3,7 +3,7 @@
 package de.amin.mechanics.conversation;
 
 import de.amin.inventories.KitSearchInventory;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.KitManager;
 import fr.minuskube.inv.SmartInventory;
 import org.bukkit.ChatColor;
@@ -31,7 +31,7 @@ public class KitSearchPromt extends StringPrompt {
                 .provider(new KitSearchInventory(s))
                 .size(6, 9)
                 .title(ChatColor.BLUE + "Kit Selector")
-                .manager(HG.INSTANCE.getInventoryManager())
+                .manager(SpeedHG.INSTANCE.getInventoryManager())
                 .build();
         INVENTORY.open((Player) cpo);
 

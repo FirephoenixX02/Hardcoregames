@@ -2,7 +2,7 @@ package de.amin.commands;
 
 import de.amin.gamestates.GameStateManager;
 import de.amin.gamestates.LobbyState;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -14,12 +14,12 @@ public class ForceStartCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        String prefix = HG.INSTANCE.PREFIX;
+        String prefix = SpeedHG.INSTANCE.PREFIX;
         if(sender instanceof Player){
             Player p = (Player) sender;
             if(p.hasPermission("hg.forcestart")){
                 if(args.length == 0){
-                    GameStateManager gameStateManager = HG.INSTANCE.getGameStateManager();
+                    GameStateManager gameStateManager = SpeedHG.INSTANCE.getGameStateManager();
                     if(gameStateManager.getCurrentGameState() instanceof LobbyState){
                         LobbyState lobbyState = (LobbyState) gameStateManager.getCurrentGameState();
                         if(lobbyState.getCountdown().isRunning()) {

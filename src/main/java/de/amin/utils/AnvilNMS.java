@@ -25,7 +25,7 @@ public class AnvilNMS {
             }
         }
 
-        private AnvilGUI menu;
+        private final AnvilGUI menu;
 
         public AnvilContainer(EntityHuman human, AnvilGUI menu){
             super(human.inventory, human.world, new BlockPosition(0, 0, 0), human);

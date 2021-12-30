@@ -4,7 +4,7 @@ package de.amin.kit.impl;
 
 import de.amin.gamestates.GameStateManager;
 import de.amin.gamestates.IngameState;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitManager;
 import de.amin.kit.KitSetting;
@@ -18,19 +18,17 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class JokerKit extends Kit implements Listener {
 
-    private KitManager kitManager;
-    private GameStateManager gameStateManager;
-    private HG plugin;
-    private KitSetting cooldown = new KitSetting(this, "Cooldown", 60, 0, 200);
+    private final KitManager kitManager;
+    private final GameStateManager gameStateManager;
+    private final SpeedHG plugin;
+    private final KitSetting cooldown = new KitSetting(this, "Cooldown", 60, 0, 200);
 
-    public JokerKit(HG plugin) {
+    public JokerKit(SpeedHG plugin) {
         this.plugin = plugin;
         this.kitManager = plugin.getKitManager();
         this.gameStateManager = plugin.getGameStateManager();

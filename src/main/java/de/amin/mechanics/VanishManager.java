@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class VanishManager {
 
-    private ArrayList<String> vanishedPlayers;
+    private final ArrayList<String> vanishedPlayers;
 
     public VanishManager() {
         vanishedPlayers = new ArrayList<>();

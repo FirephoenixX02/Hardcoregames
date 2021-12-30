@@ -2,7 +2,7 @@
 
 package de.amin.kit.impl;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitManager;
 import de.amin.kit.KitSetting;
@@ -25,11 +25,11 @@ public class KangarooKit extends Kit implements Listener {
     private final ArrayList<String> isReady;
 
 
-    private KitSetting forwardBoost = new KitSetting(this, "forward boost", 2, 0, 20);
-    private KitSetting upwardBoost = new KitSetting(this, "upward boost", 0.6, 0, 20);
+    private final KitSetting forwardBoost = new KitSetting(this, "forward boost", 2, 0, 20);
+    private final KitSetting upwardBoost = new KitSetting(this, "upward boost", 0.6, 0, 20);
 
     public KangarooKit() {
-        kitManager = HG.INSTANCE.getKitManager();
+        kitManager = SpeedHG.INSTANCE.getKitManager();
         isReady = new ArrayList<>();
 
         run();
@@ -85,7 +85,7 @@ public class KangarooKit extends Kit implements Listener {
     }
 
     public void run() {
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(HG.INSTANCE, new Runnable() {
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(SpeedHG.INSTANCE, new Runnable() {
             @Override
             public void run() {
                 for (Player player : Bukkit.getOnlinePlayers()) {

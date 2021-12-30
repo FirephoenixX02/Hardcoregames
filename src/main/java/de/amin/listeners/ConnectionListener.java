@@ -5,7 +5,7 @@ import de.amin.gamestates.GameState;
 import de.amin.gamestates.IngameState;
 import de.amin.gamestates.InvincibilityState;
 import de.amin.gamestates.LobbyState;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.KitManager;
 import de.amin.kit.KitSelector;
 import de.amin.kit.StartItems;
@@ -33,17 +33,17 @@ public class ConnectionListener implements Listener {
     private final ArrayList<String> kickedPlayers;
 
     public ConnectionListener() {
-        vanishManager = HG.INSTANCE.getVanishManager();
+        vanishManager = SpeedHG.INSTANCE.getVanishManager();
         kickedPlayers = new ArrayList<>();
     }
 
 
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
-        HG plugin = HG.INSTANCE;
-        KitManager kitManager = HG.INSTANCE.getKitManager();
+        SpeedHG plugin = SpeedHG.INSTANCE;
+        KitManager kitManager = SpeedHG.INSTANCE.getKitManager();
         plugin.getStats().createPlayer(e.getPlayer());
-        if (HG.INSTANCE.getGameStateManager().getCurrentGameState() instanceof LobbyState) {
+        if (SpeedHG.INSTANCE.getGameStateManager().getCurrentGameState() instanceof LobbyState) {
 
             //vanish vanished players
             for (String s : vanishManager.getVanishedPlayers()) {
@@ -68,8 +68,8 @@ public class ConnectionListener implements Listener {
 
 
 
-            HG.INSTANCE.getPlayers().add(e.getPlayer());
-            HG.INSTANCE.getKills().put(e.getPlayer().getName(), 0);
+            SpeedHG.INSTANCE.getPlayers().add(e.getPlayer());
+            SpeedHG.INSTANCE.getKills().put(e.getPlayer().getName(), 0);
             Scoreboards.pregameScoreboard(e.getPlayer());
 
             LobbyState lobbyState = (LobbyState) plugin.getGameStateManager().getCurrentGameState();
@@ -83,9 +83,9 @@ public class ConnectionListener implements Listener {
         } else {
             e.setJoinMessage(null);
             if(!e.getPlayer().hasPermission("hg.adminmode")){
-                HG.INSTANCE.getSpecMode().activate(e.getPlayer());
+                SpeedHG.INSTANCE.getSpecMode().activate(e.getPlayer());
             }else {
-                HG.INSTANCE.getAdminMode().activate(e.getPlayer());
+                SpeedHG.INSTANCE.getAdminMode().activate(e.getPlayer());
             }
 
         }
@@ -94,9 +94,9 @@ public class ConnectionListener implements Listener {
 
     @EventHandler
     public void onQuit(PlayerQuitEvent e) {
-        HG plugin = HG.INSTANCE;
-        KitManager kitManager = HG.INSTANCE.getKitManager();
-        AdminMode adminMode = HG.INSTANCE.getAdminMode();
+        SpeedHG plugin = SpeedHG.INSTANCE;
+        KitManager kitManager = SpeedHG.INSTANCE.getKitManager();
+        AdminMode adminMode = SpeedHG.INSTANCE.getAdminMode();
 
         if (vanishManager.isVanished(e.getPlayer())) {
             vanishManager.unvanish(e.getPlayer());
@@ -106,8 +106,8 @@ public class ConnectionListener implements Listener {
             adminMode.deactivate(e.getPlayer());
         }
 
-        if (HG.INSTANCE.getGameStateManager().getCurrentGameState() instanceof LobbyState) {
-            HG.INSTANCE.getPlayers().remove(e.getPlayer());
+        if (SpeedHG.INSTANCE.getGameStateManager().getCurrentGameState() instanceof LobbyState) {
+            SpeedHG.INSTANCE.getPlayers().remove(e.getPlayer());
             plugin.getPlayers().remove(e.getPlayer());
             kitManager.getKitHashMap().remove(e.getPlayer().getName());
 
@@ -133,7 +133,7 @@ public class ConnectionListener implements Listener {
 
     @EventHandler
     public void onKick(PlayerKickEvent e) {
-        HG plugin = HG.INSTANCE;
+        SpeedHG plugin = SpeedHG.INSTANCE;
 
         if (plugin.getGameStateManager().getCurrentGameState() instanceof IngameState || plugin.getGameStateManager().getCurrentGameState() instanceof InvincibilityState) {
             plugin.getPlayers().remove(e.getPlayer());

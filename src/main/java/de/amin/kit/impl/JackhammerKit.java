@@ -2,7 +2,7 @@ package de.amin.kit.impl;
 
 import de.amin.feast.Feast;
 import de.amin.gamestates.IngameState;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitManager;
 import de.amin.kit.KitSetting;
@@ -54,13 +54,13 @@ public class JackhammerKit extends Kit implements Listener {
     public void onBlockBreak(BlockBreakEvent e) {
         Block block = e.getBlock();
         Player player = e.getPlayer();
-        KitManager kitManager = HG.INSTANCE.getKitManager();
+        KitManager kitManager = SpeedHG.INSTANCE.getKitManager();
         Location loc = block.getLocation();
-        if (!(HG.INSTANCE.getGameStateManager().getCurrentGameState() instanceof IngameState)) return;
+        if (!(SpeedHG.INSTANCE.getGameStateManager().getCurrentGameState() instanceof IngameState)) return;
         if (!(kitManager.getKitHashMap().get(player.getName()) instanceof JackhammerKit)) return;
         if (!player.getItemInHand().getType().equals(Material.STONE_AXE)) return;
         if (!player.getItemInHand().getItemMeta().spigot().isUnbreakable()) return;
-        Feast feast = ((IngameState) HG.INSTANCE.getGameStateManager().getCurrentGameState()).getTimer().getFeast();
+        Feast feast = ((IngameState) SpeedHG.INSTANCE.getGameStateManager().getCurrentGameState()).getTimer().getFeast();
         if (player.getLocation().getPitch() < 0) {
             for (int i = 256; i > block.getLocation().getY(); i--) {
                 loc.setY(i);

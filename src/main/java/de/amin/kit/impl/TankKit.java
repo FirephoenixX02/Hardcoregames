@@ -2,7 +2,7 @@
 
 package de.amin.kit.impl;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitManager;
 import de.amin.kit.KitSetting;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class TankKit extends Kit implements Listener {
 
-    private KitManager kitManager = HG.INSTANCE.getKitManager();
+    private final KitManager kitManager = SpeedHG.INSTANCE.getKitManager();
 
     @Override
     public void giveItems(Player p) {

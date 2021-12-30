@@ -1,6 +1,6 @@
 package de.amin.mechanics;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -11,13 +11,13 @@ import org.bukkit.util.Vector;
 
 public class WorldBorder implements Listener {
 
-    public static int size = (int) HG.INSTANCE.getFileConfig().get("mechanics.bordersize");
+    public static int size = (int) SpeedHG.INSTANCE.getFileConfig().get("mechanics.bordersize");
 
     @EventHandler
     public void onMove(PlayerMoveEvent e){
         Player p = e.getPlayer();
         Location pos = p.getLocation();
-        int bordersize = (int) HG.INSTANCE.getFileConfig().get("mechanics.bordersize");
+        int bordersize = (int) SpeedHG.INSTANCE.getFileConfig().get("mechanics.bordersize");
         double yThrow = 0.5;
         if(pos.getX()>bordersize){
             p.setVelocity(new Vector(-1, yThrow, 0));

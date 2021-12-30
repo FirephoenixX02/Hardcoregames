@@ -4,7 +4,7 @@ package de.amin.kit.impl;
 
 import de.amin.gamestates.GameStateManager;
 import de.amin.gamestates.IngameState;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitManager;
 import de.amin.kit.KitSetting;
@@ -21,15 +21,15 @@ import java.util.ArrayList;
 
 public class RevivalKit extends Kit implements Listener {
 
-    private final KitManager kitManager = HG.INSTANCE.getKitManager();
-    private final GameStateManager gameStateManager = HG.INSTANCE.getGameStateManager();
+    private final KitManager kitManager = SpeedHG.INSTANCE.getKitManager();
+    private final GameStateManager gameStateManager = SpeedHG.INSTANCE.getGameStateManager();
 
 
 
     private final ArrayList<String> revivedPlayers;
 
-    private KitSetting ironSwordTime = new KitSetting(this, "Seconds to Ironsword", 600, 0, 6000);
-    private KitSetting diamondSwordTime = new KitSetting(this, "Seconds to Diamondsword", 1200, 0, 6000);
+    private final KitSetting ironSwordTime = new KitSetting(this, "Seconds to Ironsword", 600, 0, 6000);
+    private final KitSetting diamondSwordTime = new KitSetting(this, "Seconds to Diamondsword", 1200, 0, 6000);
 
 
     public RevivalKit() {
@@ -89,7 +89,7 @@ public class RevivalKit extends Kit implements Listener {
     }
 
     private Material sword() {
-        int seconds = ((IngameState) HG.INSTANCE.getGameStateManager().getCurrentGameState()).getTimer().getSeconds();
+        int seconds = ((IngameState) SpeedHG.INSTANCE.getGameStateManager().getCurrentGameState()).getTimer().getSeconds();
         if (seconds < ironSwordTime.getValue()) {
             return Material.STONE_SWORD;
         } else if (seconds < diamondSwordTime.getValue()) {

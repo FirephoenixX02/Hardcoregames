@@ -5,7 +5,7 @@ package de.amin.kit.impl;
 import de.amin.gamestates.GameStateManager;
 import de.amin.gamestates.IngameState;
 import de.amin.gamestates.InvincibilityState;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitManager;
 import de.amin.kit.KitSetting;
@@ -31,8 +31,8 @@ public class HermitKit extends Kit implements Listener, CommandExecutor {
     public static HashMap<String, Location> hermitPlayers = new HashMap<>();
 
     private static int taskID = 0;
-    private final GameStateManager gameStateManager = HG.INSTANCE.getGameStateManager();
-    private final KitManager kitManager = HG.INSTANCE.getKitManager();
+    private final GameStateManager gameStateManager = SpeedHG.INSTANCE.getGameStateManager();
+    private final KitManager kitManager = SpeedHG.INSTANCE.getKitManager();
 
     public HermitKit() {
 
@@ -69,13 +69,13 @@ public class HermitKit extends Kit implements Listener, CommandExecutor {
     }
 
     public static void run(){
-        taskID = Bukkit.getScheduler().scheduleSyncRepeatingTask(HG.INSTANCE, new Runnable() {
+        taskID = Bukkit.getScheduler().scheduleSyncRepeatingTask(SpeedHG.INSTANCE, new Runnable() {
             @Override
             public void run() {
-                if(HG.INSTANCE.getGameStateManager().getCurrentGameState() instanceof IngameState)Bukkit.getScheduler().cancelTask(taskID);
-                if(HG.INSTANCE.getGameStateManager().getCurrentGameState() instanceof InvincibilityState){
-                    for (Player player : HG.INSTANCE.getPlayers()){
-                        if(HG.INSTANCE.getKitManager().getKit(player) instanceof HermitKit){
+                if(SpeedHG.INSTANCE.getGameStateManager().getCurrentGameState() instanceof IngameState)Bukkit.getScheduler().cancelTask(taskID);
+                if(SpeedHG.INSTANCE.getGameStateManager().getCurrentGameState() instanceof InvincibilityState){
+                    for (Player player : SpeedHG.INSTANCE.getPlayers()){
+                        if(SpeedHG.INSTANCE.getKitManager().getKit(player) instanceof HermitKit){
                             renewEffect(player, new PotionEffect(PotionEffectType.SPEED, 100, 2));
                         }
                     }
@@ -103,7 +103,7 @@ public class HermitKit extends Kit implements Listener, CommandExecutor {
             return true;
         }
         hermitPlayers.put(player.getName(), player.getLocation());
-        player.sendMessage(HG.INSTANCE.PREFIX + "§7Succesfully set spawn location!");
+        player.sendMessage(SpeedHG.INSTANCE.PREFIX + "§7Succesfully set spawn location!");
         return false;
     }
 

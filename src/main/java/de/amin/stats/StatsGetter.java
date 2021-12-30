@@ -2,7 +2,7 @@
 
 package de.amin.stats;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.utils.UUIDFetcher;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -16,15 +16,15 @@ import java.sql.SQLException;
 public class StatsGetter {
 
     private final DataSource source;
-    private HG plugin;
+    private final SpeedHG plugin;
 
-    public StatsGetter(HG plugin, DataSource source) {
+    public StatsGetter(SpeedHG plugin, DataSource source) {
         this.plugin = plugin;
         this.source = source;
     }
 
     public void createTable() {
-        if(!HG.isConnected)return;
+        if(!SpeedHG.isConnected)return;
         try (Connection con = source.getConnection();
              PreparedStatement stmt = con.prepareStatement("CREATE TABLE IF NOT EXISTS stats " +
                      "(PLAYER_UUID VARCHAR(255), NAME VARCHAR(255), KILLS INT, DEATHS INT, GAMESPLAYED INT, WINS INT, PRIMARY KEY (PLAYER_UUID))")) {
@@ -36,7 +36,7 @@ public class StatsGetter {
     }
 
     public void createPlayer(Player player){
-        if(!HG.isConnected)return;
+        if(!SpeedHG.isConnected)return;
         if(exists(player.getName()))return;
         try (Connection con = source.getConnection();
              PreparedStatement stmt = con.prepareStatement("INSERT IGNORE INTO stats (PLAYER_UUID, NAME, KILLS, DEATHS, GAMESPLAYED, WINS) VALUES (?,?,?,?,?,?)")){
@@ -53,7 +53,7 @@ public class StatsGetter {
     }
 
     public boolean exists(String player){
-        if(!HG.isConnected)return false;
+        if(!SpeedHG.isConnected)return false;
         try (Connection con = source.getConnection();
              PreparedStatement stmt = con.prepareStatement("SELECT * FROM stats WHERE PLAYER_UUID = ?")){
             stmt.setString(1, UUIDFetcher.getUUID(player).toString());
@@ -67,7 +67,7 @@ public class StatsGetter {
 
 
     public int get(String player, String query) {
-        if(!HG.isConnected)return 0;
+        if(!SpeedHG.isConnected)return 0;
         try (Connection con = source.getConnection();
                 PreparedStatement stmt = con.prepareStatement("SELECT * FROM stats WHERE PLAYER_UUID = ?")){
 
@@ -82,7 +82,7 @@ public class StatsGetter {
     }
 
     public void set(String player, String query, int value){
-            if(!HG.isConnected)return;
+            if(!SpeedHG.isConnected)return;
             try (Connection con = source.getConnection();
                  PreparedStatement stmt = con.prepareStatement("UPDATE stats SET " + query + " = ? WHERE PLAYER_UUID = ?")){
 

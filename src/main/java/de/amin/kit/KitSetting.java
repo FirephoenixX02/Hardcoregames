@@ -2,7 +2,7 @@
 
 package de.amin.kit;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.io.IOException;
@@ -25,12 +25,12 @@ public class KitSetting {
         this.maxValue = maxValue;
         configKey = "kitsettings." + kit.getName() + "." + name;
 
-        config = HG.INSTANCE.getFileConfig();
+        config = SpeedHG.INSTANCE.getFileConfig();
 
         if (config.getString(configKey) == null) {
             try {
                 config.set(configKey, defaultValue);
-                config.save(HG.INSTANCE.getFile());
+                config.save(SpeedHG.INSTANCE.getFile());
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -38,7 +38,7 @@ public class KitSetting {
     }
 
     public static double get(Kit kit, String name){
-        return HG.INSTANCE.getFileConfig().getDouble("kitsettings." + kit.getName() + "." + name);
+        return SpeedHG.INSTANCE.getFileConfig().getDouble("kitsettings." + kit.getName() + "." + name);
     }
 
     public double getValue() {
@@ -48,7 +48,7 @@ public class KitSetting {
     public void setValue(double value) {
         try {
             config.set(configKey, value);
-            config.save(HG.INSTANCE.getFile());
+            config.save(SpeedHG.INSTANCE.getFile());
         } catch (IOException e) {
             e.printStackTrace();
         }

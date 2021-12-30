@@ -1,0 +1,32 @@
+Name: Speed HG
+
+Features:
+- Min Spieler: 6 - Noch nicht implementiert für Testzwecke
+- Speed - Done
+- Haste - Done
+- MiniFeast (spawnt ab 5min)
+- Feast (Ankündigung: 7:30, Start: 10:00, nur Dia- Schuhe und Brustplatte und Iron- Hose und Helm, Eisenbarren, Diamant/Iron Schwert, Iron- Axt und Spitzhacke, keine Stärke, Speed Pots (Trinken), Stone Wall (16x), Holz Planks (16x), Lava/fns und Wasser, Kürbissamen, Kakteen)
+- Border (ab 20min)
+- FinalGladi (Bei 2 Spielern ab minute 30 wird man in einen Gladikasten geportet)
+- Recraft (Cocobeans, Kakteen (2x), Pilze, Kürbissamen (2x))
+- Diamanten weg
+- Iron Armor erst ab minute 5 craftbar
+
+Kits:
+- Anchor
+- Ninja (wenn man in Obi/Stone Walls/Holz eingebaut wird nicht raus tpbar)
+- Kangaroo
+- Gladiator
+- Scout (Werbare Speed Pots)
+- Blink (wenn man in Obi/Stone Walls/Holz eingebaut wird nicht raus tpbar)
+- Digger
+- Joker
+- Madman
+- (Fire Kit / Napalm)
+- Tank
+- Thor
+- Viking
+- Viper
+- Poseidon
+- Gambler
+- Armor Maker (upgrade chestplate pro kill, maximum iron chest prot 1)

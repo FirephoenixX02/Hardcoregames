@@ -1,6 +1,6 @@
 package de.amin.kit;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.impl.*;
 import de.amin.kit.impl.gladiator.GladiatorKit;
 import de.amin.mechanics.conversation.KitSearchPromt;
@@ -8,7 +8,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.conversations.ConversationFactory;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -17,19 +16,19 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class KitManager {
 
-    private ArrayList<Kit> kitArray;
-    private HashMap<String, Kit> kitHashMap;
-    private ArrayList<Kit> disabledKits;
-    private HG plugin;
+    private final ArrayList<Kit> kitArray;
+    private final HashMap<String, Kit> kitHashMap;
+    private final ArrayList<Kit> disabledKits;
+    private final SpeedHG plugin;
     private Kit forcedKit;
 
-    public KitManager(HG plugin){
+    public KitManager(SpeedHG plugin){
         kitArray = new ArrayList<>();
         kitHashMap = new HashMap<>();
         disabledKits = new ArrayList<>();
         this.plugin = plugin;
 
-        Bukkit.getScheduler().scheduleSyncDelayedTask(HG.INSTANCE, new Runnable() {
+        Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedHG.INSTANCE, new Runnable() {
             @Override
             public void run() {
                 init();
@@ -45,11 +44,11 @@ public class KitManager {
         registerKit(new LauncherKit());
         registerKit(new SwitcherKit());
         registerKit(new WormKit());
-        registerKit(new AnchorKit());
+        //registerKit(new AnchorKit());
         registerKit(new DiggerKit());
         registerKit(new HulkKit());
         registerKit(new FiremanKit());
-        registerKit(new MagmaKit());
+        //registerKit(new MagmaKit());
         registerKit(new AchillesKit());
         registerKit(new StomperKit());
         registerKit(new SurpriseKit());
@@ -63,7 +62,7 @@ public class KitManager {
         registerKit(new GladiatorKit());
         registerKit(new MonkKit());
         registerKit(new TankKit());
-        registerKit(new NinjaKit());
+        //registerKit(new NinjaKit());
         registerKit(new GrandpaKit());
         registerKit(new RedstonerKit());
         registerKit(new RevivalKit());
@@ -88,7 +87,7 @@ public class KitManager {
         }
         kitHashMap.remove(playerName);
         kitHashMap.put(playerName, kit);
-        Bukkit.getPlayer(playerName).sendMessage(HG.INSTANCE.PREFIX + "§7You selected §a" + getKitHashMap().get(playerName).getName());
+        Bukkit.getPlayer(playerName).sendMessage(SpeedHG.INSTANCE.PREFIX + "§7You selected §a" + getKitHashMap().get(playerName).getName());
         Bukkit.getPlayer(playerName).closeInventory();
     }
 
@@ -126,7 +125,7 @@ public class KitManager {
     }
 
     public void forceKit(Kit k){
-        for(Player player : HG.INSTANCE.getPlayers()){
+        for(Player player : SpeedHG.INSTANCE.getPlayers()){
             player.closeInventory();
             setKit(player.getName(), k);
             forcedKit = k;
@@ -179,7 +178,7 @@ public class KitManager {
     }
 
     public void promtKitSearch(Player player){
-        ConversationFactory factory = new ConversationFactory(HG.INSTANCE);
+        ConversationFactory factory = new ConversationFactory(SpeedHG.INSTANCE);
         factory.withFirstPrompt(new KitSearchPromt()).withEscapeSequence("exit").thatExcludesNonPlayersWithMessage("bugger off")
                 .withLocalEcho(false).buildConversation(player).begin();
         player.closeInventory();

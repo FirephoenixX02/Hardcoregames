@@ -2,7 +2,7 @@
 
 package de.amin.utils;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.KitManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -11,10 +11,10 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 
 public class CustomDeathMessages implements Listener {
 
-    private KitManager kitManager;
+    private final KitManager kitManager;
 
     public CustomDeathMessages(){
-        kitManager = HG.INSTANCE.getKitManager();
+        kitManager = SpeedHG.INSTANCE.getKitManager();
     }
 
     @EventHandler

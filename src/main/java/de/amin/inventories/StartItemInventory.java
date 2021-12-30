@@ -2,7 +2,7 @@
 
 package de.amin.inventories;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.StartItems;
 import de.amin.utils.ItemBuilder;
 import fr.minuskube.inv.ClickableItem;
@@ -18,14 +18,14 @@ import org.bukkit.inventory.ItemStack;
 
 public class StartItemInventory implements InventoryProvider {
 
-    private StartItems startItems = HG.INSTANCE.getStartItems();
+    private final StartItems startItems = SpeedHG.INSTANCE.getStartItems();
 
     public static final SmartInventory INVENTORY = SmartInventory.builder()
             .id("myInventory")
             .provider(new StartItemInventory())
             .size(3, 9)
             .title(ChatColor.BLUE + "Start Item Selector")
-            .manager(HG.INSTANCE.getInventoryManager())
+            .manager(SpeedHG.INSTANCE.getInventoryManager())
             .build();
 
     @Override

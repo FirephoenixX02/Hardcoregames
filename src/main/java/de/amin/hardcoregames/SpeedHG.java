@@ -3,7 +3,6 @@ package de.amin.hardcoregames;
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteStreams;
 import com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource;
-import de.amin.feast.FeastProtection;
 import de.amin.commands.*;
 import de.amin.gamestates.GameState;
 import de.amin.gamestates.GameStateManager;
@@ -11,8 +10,6 @@ import de.amin.kit.impl.HermitKit;
 import de.amin.kit.KitManager;
 import de.amin.kit.KitSelector;
 import de.amin.kit.StartItems;
-import de.amin.kit.impl.*;
-import de.amin.kit.impl.gladiator.GladiatorKit;
 import de.amin.listeners.*;
 import de.amin.mechanics.VanishManager;
 import de.amin.mechanics.*;
@@ -23,6 +20,7 @@ import fr.minuskube.inv.InventoryManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -35,9 +33,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public final class HG extends JavaPlugin implements PluginMessageListener {
+public final class SpeedHG extends JavaPlugin implements PluginMessageListener {
 
-    public static HG INSTANCE;
+    public static SpeedHG INSTANCE;
     private GameStateManager gameStateManager;
     private ArrayList<Player> players;
     private KitManager kitManager;
@@ -56,7 +54,13 @@ public final class HG extends JavaPlugin implements PluginMessageListener {
     private HashMap<String, Integer> kills;
     private int playersAtStart;
 
-    private final File file = new File("plugins//Hardcoregames//config.yml");
+    public static File file = new File("plugins/SpeedHG", "config.yml");
+    public static FileConfiguration cfg = YamlConfiguration.loadConfiguration(file);
+
+    public static File fileMessages = new File("plugins/SpeedHG", "messages.yml");
+    public static FileConfiguration cfgM = YamlConfiguration.loadConfiguration(fileMessages);
+
+    //private final File file = new File("plugins//Hardcoregames//config.yml");
     private FileConfiguration config = getConfig();
     public static boolean isConnected;
 

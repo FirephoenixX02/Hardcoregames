@@ -2,7 +2,7 @@
 
 package de.amin.kit.impl;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitManager;
 import de.amin.kit.KitSetting;
@@ -21,7 +21,7 @@ import java.util.Random;
 public class NeoKit extends Kit implements Listener {
 
     private final KitSetting dodgeProbability = new KitSetting(this, "Dodge Probability(1 in X hits)", 7, 1, 100);
-    private final KitManager kitManager = HG.INSTANCE.getKitManager();
+    private final KitManager kitManager = SpeedHG.INSTANCE.getKitManager();
 
     @Override
     public void giveItems(Player p) {

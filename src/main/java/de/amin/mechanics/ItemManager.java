@@ -2,7 +2,7 @@
 
 package de.amin.mechanics;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
@@ -13,7 +13,7 @@ import java.util.HashMap;
 
 public class ItemManager implements Listener {
 
-    private HashMap<String, ArrayList<ItemStack>> items;
+    private final HashMap<String, ArrayList<ItemStack>> items;
 
     public ItemManager(){
         items = new HashMap<>();
@@ -34,7 +34,7 @@ public class ItemManager implements Listener {
     }
 
     private void run(){
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(HG.INSTANCE, () -> {
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(SpeedHG.INSTANCE, () -> {
             for(String s : items.keySet()){
                 if(Bukkit.getPlayer(s)!=null && Bukkit.getPlayer(s).getInventory().firstEmpty()!=-1){
                     if(items.get(s).size()>0) {

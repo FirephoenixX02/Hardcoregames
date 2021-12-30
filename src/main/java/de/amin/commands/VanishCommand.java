@@ -2,7 +2,7 @@
 
 package de.amin.commands;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.mechanics.VanishManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -11,10 +11,10 @@ import org.bukkit.entity.Player;
 
 public class VanishCommand implements CommandExecutor {
 
-    private VanishManager vanishManager;
+    private final VanishManager vanishManager;
 
     public VanishCommand(){
-        vanishManager = HG.INSTANCE.getVanishManager();
+        vanishManager = SpeedHG.INSTANCE.getVanishManager();
     }
 
     @Override

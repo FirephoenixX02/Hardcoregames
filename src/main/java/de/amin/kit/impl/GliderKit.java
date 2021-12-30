@@ -2,20 +2,17 @@
 
 package de.amin.kit.impl;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitSetting;
 import de.amin.utils.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.entity.Chicken;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class GliderKit extends Kit {
 
@@ -54,9 +51,9 @@ public class GliderKit extends Kit {
     }
 
     private void run() {
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(HG.INSTANCE, () -> {
-            for (Player player : HG.INSTANCE.getPlayers()) {
-                if (HG.INSTANCE.getKitManager().getKit(player) instanceof GliderKit) {
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(SpeedHG.INSTANCE, () -> {
+            for (Player player : SpeedHG.INSTANCE.getPlayers()) {
+                if (SpeedHG.INSTANCE.getKitManager().getKit(player) instanceof GliderKit) {
                     if (player.getItemInHand().getType().equals(Material.STICK) && player.getItemInHand().getItemMeta().spigot().isUnbreakable()) {
                         if(!player.isOnGround()){
                             player.setVelocity(new Vector(

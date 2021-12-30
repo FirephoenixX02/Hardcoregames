@@ -1,6 +1,6 @@
 package de.amin.commands;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -20,7 +20,7 @@ public class upCommand implements CommandExecutor {
             if(!loc.getBlock().getType().equals(Material.AIR)){
                 loc.setY(loc.getY() + 1);
                 p.teleport(loc);
-                p.sendMessage(HG.INSTANCE.PREFIX + "§7You have been teleported to the surface.");
+                p.sendMessage(SpeedHG.INSTANCE.PREFIX + "§7You have been teleported to the surface.");
                 return true;
             }
         }

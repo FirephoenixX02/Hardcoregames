@@ -2,10 +2,10 @@ package de.amin.countdowns;
 
 import de.amin.feast.Bonusfeast;
 import de.amin.feast.Feast;
-import de.amin.feast.Minifeast;
+import de.amin.feast.OldMiniFeast;
 import de.amin.gamestates.GameState;
 import de.amin.gamestates.IngameState;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.mechanics.Pit;
 import de.amin.mechanics.Scoreboards;
 import org.bukkit.Bukkit;
@@ -16,7 +16,7 @@ import java.util.Random;
 
 public class IngameTimer extends Countdown {
 
-    private FileConfiguration config = HG.INSTANCE.getConfig();
+    private final FileConfiguration config = SpeedHG.INSTANCE.getConfig();
     private int seconds;
     private int taskID;
 
@@ -36,11 +36,11 @@ public class IngameTimer extends Countdown {
 
     @Override
     public void start() {
-        taskID = Bukkit.getScheduler().scheduleSyncRepeatingTask(HG.INSTANCE, new Runnable() {
+        taskID = Bukkit.getScheduler().scheduleSyncRepeatingTask(SpeedHG.INSTANCE, new Runnable() {
             @Override
             public void run() {
 
-                if(!(HG.INSTANCE.getGameStateManager().getCurrentGameState() instanceof IngameState))return;
+                if(!(SpeedHG.INSTANCE.getGameStateManager().getCurrentGameState() instanceof IngameState))return;
 
                 for (Player p : Bukkit.getOnlinePlayers()) {
 
@@ -73,13 +73,13 @@ public class IngameTimer extends Countdown {
                         pit = new Pit();
                     }
                 }else if(seconds == gameEndTime){
-                    HG.INSTANCE.getGameStateManager().setGameState(GameState.ENDING_STATE);
+                    SpeedHG.INSTANCE.getGameStateManager().setGameState(GameState.ENDING_STATE);
                     Bukkit.getScheduler().cancelTask(taskID);
                 }
 
                 //1 zu 200 Chance das ein Minifeast spawnt jede Sekunde
                 if (new Random().nextInt(200) == 100 && seconds > 3 * 60 && seconds < 15 * 60) {
-                    new Minifeast();
+                    new OldMiniFeast();
                 }
                 seconds++;
             }

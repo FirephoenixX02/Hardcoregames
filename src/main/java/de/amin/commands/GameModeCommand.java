@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 
 public class GameModeCommand implements CommandExecutor {
 
-    private String prefix = "§8[§aGamemode§8]§7 ";
+    private final String prefix = "§8[§aGamemode§8]§7 ";
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {

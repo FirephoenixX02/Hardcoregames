@@ -5,7 +5,7 @@ package de.amin.mechanics;
 import de.amin.feast.Feast;
 import de.amin.gamestates.GameStateManager;
 import de.amin.gamestates.IngameState;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -19,10 +19,10 @@ public class RecraftNerf {
 
     private int taskID;
 
-    private FileConfiguration config;
-    private GameStateManager gameStateManager;
+    private final FileConfiguration config;
+    private final GameStateManager gameStateManager;
 
-    private PotionEffect weakness;
+    private final PotionEffect weakness;
 
 
     public RecraftNerf(FileConfiguration config, GameStateManager gameStateManager) {
@@ -37,7 +37,7 @@ public class RecraftNerf {
     }
 
     private void run() {
-        taskID = Bukkit.getScheduler().scheduleSyncRepeatingTask(HG.INSTANCE, new Runnable() {
+        taskID = Bukkit.getScheduler().scheduleSyncRepeatingTask(SpeedHG.INSTANCE, new Runnable() {
             @Override
             public void run() {
                 if (gameStateManager.getCurrentGameState() instanceof IngameState) {

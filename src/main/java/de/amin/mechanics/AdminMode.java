@@ -6,7 +6,7 @@ import de.amin.gamestates.GameState;
 import de.amin.gamestates.GameStateManager;
 import de.amin.gamestates.IngameState;
 import de.amin.gamestates.InvincibilityState;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.utils.ItemBuilder;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -31,8 +31,8 @@ public class AdminMode{
 
     public AdminMode() {
         adminPlayers = new HashMap<>();
-        vanishManager = HG.INSTANCE.getVanishManager();
-        gameStateManager = HG.INSTANCE.getGameStateManager();
+        vanishManager = SpeedHG.INSTANCE.getVanishManager();
+        gameStateManager = SpeedHG.INSTANCE.getGameStateManager();
 
         players = new ItemBuilder(new ItemStack(Material.COMPASS)).setDisplayName("§ePlayers").getItem();
         playerInfo = new ItemBuilder(new ItemStack(Material.SIGN)).setDisplayName("§cPlayer Info").getItem();
@@ -49,10 +49,10 @@ public class AdminMode{
             player.setVelocity(new Vector(0, 0.5, 0));
             player.sendMessage("§bYou entered Admin mode.");
             adminPlayers.put(player.getName(), player.getInventory().getContents());
-            HG.INSTANCE.getPlayers().remove(player);
+            SpeedHG.INSTANCE.getPlayers().remove(player);
             giveItems(player);
             if(gameStateManager.getCurrentGameState() instanceof IngameState || gameStateManager.getCurrentGameState() instanceof InvincibilityState){
-                if(HG.INSTANCE.getPlayers().size()<=1){
+                if(SpeedHG.INSTANCE.getPlayers().size()<=1){
                     gameStateManager.setGameState(GameState.ENDING_STATE);
                 }
             }
@@ -66,7 +66,7 @@ public class AdminMode{
             }else {
                 player.sendMessage("§cYou left Admin mode");
                 player.getInventory().setContents(adminPlayers.get(player.getName()));
-                HG.INSTANCE.getPlayers().add(player);
+                SpeedHG.INSTANCE.getPlayers().add(player);
                 adminPlayers.remove(player.getName());
             }
         }

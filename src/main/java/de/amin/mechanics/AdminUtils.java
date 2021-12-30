@@ -2,7 +2,7 @@
 
 package de.amin.mechanics;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.utils.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -23,8 +23,8 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 public class AdminUtils implements Listener {
 
-    private AdminMode adminMode;
-    private VanishManager vanishManager;
+    private final AdminMode adminMode;
+    private final VanishManager vanishManager;
 
     private final ItemStack players;
     private final ItemStack playerInfo;
@@ -34,8 +34,8 @@ public class AdminUtils implements Listener {
     private final ItemStack teleport;
 
     public AdminUtils(){
-        adminMode = HG.INSTANCE.getAdminMode();
-        vanishManager = HG.INSTANCE.getVanishManager();
+        adminMode = SpeedHG.INSTANCE.getAdminMode();
+        vanishManager = SpeedHG.INSTANCE.getVanishManager();
 
         players = new ItemBuilder(new ItemStack(Material.COMPASS)).setDisplayName("§ePlayers").getItem();
         playerInfo = new ItemBuilder(new ItemStack(Material.SIGN)).setDisplayName("§cPlayer Info").getItem();
@@ -49,7 +49,7 @@ public class AdminUtils implements Listener {
     public void onEntityInteract(PlayerInteractEntityEvent e) {
         if(!(e.getRightClicked() instanceof Player))return;
         Player player = e.getPlayer();
-        if (!HG.INSTANCE.getAdminMode().getAdminPlayers().containsKey(player.getName())) return;
+        if (!SpeedHG.INSTANCE.getAdminMode().getAdminPlayers().containsKey(player.getName())) return;
         Player target = (Player) e.getRightClicked();
 
         switch (player.getItemInHand().getType()) {
@@ -151,8 +151,8 @@ public class AdminUtils implements Listener {
         player.sendMessage("§7Ping§8: §9" + ((CraftPlayer) target).getHandle().ping);
         player.sendMessage("§7Health§8: §9" + target.getHealth() / 2 + " Hearts");
         player.sendMessage("§7IP-Adress§8: §9" + target.getAddress());
-        player.sendMessage("§7Kills§8: §9" + HG.INSTANCE.getKills().get(target.getName()));
-        player.sendMessage("§7Kit§8: §9" + HG.INSTANCE.getKitManager().getKitHashMap().get(target.getName()).getName());
+        player.sendMessage("§7Kills§8: §9" + SpeedHG.INSTANCE.getKills().get(target.getName()));
+        player.sendMessage("§7Kit§8: §9" + SpeedHG.INSTANCE.getKitManager().getKitHashMap().get(target.getName()).getName());
         player.sendMessage("§b§m--------------------------------");
 
     }

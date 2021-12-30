@@ -1,6 +1,6 @@
 package de.amin.mechanics;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
@@ -17,10 +17,10 @@ import java.util.HashMap;
 
 public class Launcher implements Listener {
 
-    private HashMap<String, Long> launchedPlayers = HG.INSTANCE.getLaunchedPlayers();
+    private final HashMap<String, Long> launchedPlayers = SpeedHG.INSTANCE.getLaunchedPlayers();
     private final Material[] materialArray = new Material[]{Material.WOOD_PLATE, Material.GOLD_PLATE, Material.IRON_PLATE, Material.STONE_PLATE, Material.STONE_BUTTON, Material.WOOD_BUTTON, Material.SNOW};
-    private ArrayList<Material> materials = new ArrayList<>();
-    private double factor = (double) HG.INSTANCE.getConfig().get("mechanics.launchfactor");
+    private final ArrayList<Material> materials = new ArrayList<>();
+    private final double factor = (double) SpeedHG.INSTANCE.getConfig().get("mechanics.launchfactor");
 
 
     @EventHandler

@@ -2,7 +2,7 @@
 
 package de.amin.kit.impl;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitManager;
 import de.amin.kit.KitSetting;
@@ -25,11 +25,11 @@ public class StomperKit extends Kit implements Listener {
 
     private final Sound sound;
 
-    private KitSetting horizontalRadius = new KitSetting(this, "Horizontal Radius", 3, 0, 100);
-    private KitSetting verticalRadius = new KitSetting(this, "Vertical Radius", 2, 0, 100);
+    private final KitSetting horizontalRadius = new KitSetting(this, "Horizontal Radius", 3, 0, 100);
+    private final KitSetting verticalRadius = new KitSetting(this, "Vertical Radius", 2, 0, 100);
 
     public StomperKit(){
-        kitManager = HG.INSTANCE.getKitManager();
+        kitManager = SpeedHG.INSTANCE.getKitManager();
         sound = Sound.ANVIL_LAND;
     }
 

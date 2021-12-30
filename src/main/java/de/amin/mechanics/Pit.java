@@ -2,12 +2,7 @@
 
 package de.amin.mechanics;
 
-import com.sk89q.worldedit.*;
-import com.sk89q.worldedit.blocks.BaseBlock;
-import com.sk89q.worldedit.function.pattern.BlockPattern;
-import com.sk89q.worldedit.internal.LocalWorldAdapter;
-import com.sk89q.worldedit.patterns.Pattern;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.impl.gladiator.Gladiator;
 import org.bukkit.*;
 import org.bukkit.Location;
@@ -22,23 +17,23 @@ public class Pit {
     public static boolean isPitAnnounced = false;
     public static boolean isPit = false;
 
-    private int radius;
+    private final int radius;
     private int taskID;
     private int seconds;
-    private HG hg;
+    private final SpeedHG hg;
 
     public Pit() {
-        radius = HG.INSTANCE.getFileConfig().getInt("pit.radius");
+        radius = SpeedHG.INSTANCE.getFileConfig().getInt("pit.radius");
         taskID = 0;
-        seconds = HG.INSTANCE.getFileConfig().getInt("pit.countdown");
-        hg = HG.INSTANCE;
+        seconds = SpeedHG.INSTANCE.getFileConfig().getInt("pit.countdown");
+        hg = SpeedHG.INSTANCE;
         runPit();
         runDamage();
     }
 
     public void runPit() {
         isPitAnnounced = true;
-        taskID = Bukkit.getScheduler().scheduleSyncRepeatingTask(HG.INSTANCE, () -> {
+        taskID = Bukkit.getScheduler().scheduleSyncRepeatingTask(SpeedHG.INSTANCE, () -> {
 
             if(isPit) {
                 Bukkit.getScheduler().cancelTask(taskID);
@@ -86,7 +81,7 @@ public class Pit {
     }
 
     private void removeEntities(){
-        Bukkit.getScheduler().scheduleSyncDelayedTask(HG.INSTANCE, new Runnable() {
+        Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedHG.INSTANCE, new Runnable() {
             @Override
             public void run() {
                 for(Entity e : Bukkit.getWorld("world").getEntities()){
@@ -99,9 +94,9 @@ public class Pit {
     }
 
     private void runDamage(){
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(HG.INSTANCE, () -> {
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(SpeedHG.INSTANCE, () -> {
             if(isPit){
-                for (Player player : HG.INSTANCE.getPlayers()){
+                for (Player player : SpeedHG.INSTANCE.getPlayers()){
                     if(player.getLocation().getY()>40
                     || player.getLocation().getX()>radius+10
                     || player.getLocation().getX()<(-radius) -10
@@ -116,7 +111,7 @@ public class Pit {
     }
 
     private void teleportPlayers() {
-        Bukkit.getScheduler().scheduleSyncDelayedTask(HG.INSTANCE, new Runnable() {
+        Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedHG.INSTANCE, new Runnable() {
             @Override
             public void run() {
                 for(Player player : Bukkit.getOnlinePlayers()) {

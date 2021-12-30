@@ -3,7 +3,7 @@
 package de.amin.kit.impl;
 
 import de.amin.gamestates.GameStateManager;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitManager;
 import de.amin.kit.KitSetting;
@@ -21,13 +21,13 @@ import java.util.ArrayList;
 
 public class KayaKit extends Kit implements Listener {
 
-    private KitManager kitManager;
-    private GameStateManager gameStateManager;
-    private ArrayList<Block> blocks;
+    private final KitManager kitManager;
+    private final GameStateManager gameStateManager;
+    private final ArrayList<Block> blocks;
 
     public KayaKit(){
-        kitManager = HG.INSTANCE.getKitManager();
-        gameStateManager = HG.INSTANCE.getGameStateManager();
+        kitManager = SpeedHG.INSTANCE.getKitManager();
+        gameStateManager = SpeedHG.INSTANCE.getGameStateManager();
         blocks = new ArrayList<>();
         run();
     }
@@ -85,11 +85,11 @@ public class KayaKit extends Kit implements Listener {
 
 
     public void run(){
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(HG.INSTANCE, new Runnable() {
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(SpeedHG.INSTANCE, new Runnable() {
             @Override
             public void run() {
                 for(Player player : Bukkit.getOnlinePlayers()){
-                    if(HG.INSTANCE.getPlayers().contains(player) && !(kitManager.getKit(player) instanceof KayaKit)){
+                    if(SpeedHG.INSTANCE.getPlayers().contains(player) && !(kitManager.getKit(player) instanceof KayaKit)){
 
                             if(blocks.contains(player.getLocation().subtract(0,1,0).getBlock())){
                                 blocks.remove(player.getLocation().subtract(0,1,0).getBlock());
