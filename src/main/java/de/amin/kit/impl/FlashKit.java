@@ -2,7 +2,7 @@
 
 package de.amin.kit.impl;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitManager;
 import de.amin.kit.KitSetting;
@@ -29,12 +29,12 @@ public class FlashKit extends Kit implements Listener {
     private final HashMap<String, Long> cooldown;
     private final HashMap<String, Integer> distanceCooldown;
 
-    private KitSetting baseCD = new KitSetting(this, "base cooldown", 25, 0, 100);
-    private KitSetting maxDistance = new KitSetting(this, "maximum distance", 150, 0, 500);
+    private final KitSetting baseCD = new KitSetting(this, "base cooldown", 25, 0, 100);
+    private final KitSetting maxDistance = new KitSetting(this, "maximum distance", 150, 0, 500);
 
     public FlashKit() {
-        kitManager = HG.INSTANCE.getKitManager();
-        cooldown = HG.INSTANCE.getCooldown();
+        kitManager = SpeedHG.INSTANCE.getKitManager();
+        cooldown = SpeedHG.INSTANCE.getCooldown();
         distanceCooldown = new HashMap();
     }
 

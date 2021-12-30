@@ -25,7 +25,7 @@ public class BackpackerKit extends Kit implements Listener {
 
     private final HashMap<UUID, Inventory> backpacks;
     private final KitManager kitManager;
-    private GameStateManager gameStateManager;
+    private final GameStateManager gameStateManager;
 
     public BackpackerKit(KitManager kitManager, GameStateManager gameStateManager) {
         this.kitManager = kitManager;

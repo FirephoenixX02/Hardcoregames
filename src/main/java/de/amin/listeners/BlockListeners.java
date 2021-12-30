@@ -1,18 +1,13 @@
 package de.amin.listeners;
 
 import de.amin.gamestates.*;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.inventory.ItemStack;
-
-import javax.swing.text.PlainDocument;
-import java.util.Arrays;
-import java.util.List;
 
 public class BlockListeners implements Listener {
 
@@ -20,7 +15,7 @@ public class BlockListeners implements Listener {
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event){
         Player player = event.getPlayer();
-        GameState currentGameState = HG.INSTANCE.getGameStateManager().getCurrentGameState();
+        GameState currentGameState = SpeedHG.INSTANCE.getGameStateManager().getCurrentGameState();
         if(currentGameState instanceof LobbyState || currentGameState instanceof EndingState){
             event.setCancelled(true);
         } else {
@@ -42,7 +37,7 @@ public class BlockListeners implements Listener {
         if(event.getItemInHand().getItemMeta().spigot().isUnbreakable()){
             event.setCancelled(true);
         }
-        GameState currentGameState = HG.INSTANCE.getGameStateManager().getCurrentGameState();
+        GameState currentGameState = SpeedHG.INSTANCE.getGameStateManager().getCurrentGameState();
         if(currentGameState instanceof LobbyState){
             event.setCancelled(true);
         }

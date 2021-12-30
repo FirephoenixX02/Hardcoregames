@@ -1,6 +1,6 @@
 package de.amin.commands;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -15,7 +15,7 @@ public class PingCommand implements CommandExecutor {
         if(!(sender instanceof Player))return true;
         Player p = (Player) sender;
         int ping = ((CraftPlayer) p).getHandle().ping;
-        p.sendMessage(HG.INSTANCE.PREFIX + "§7Your Ping is §9" + ping + "ms§7.");
+        p.sendMessage(SpeedHG.INSTANCE.PREFIX + "§7Your Ping is §9" + ping + "ms§7.");
         return false;
     }
 }

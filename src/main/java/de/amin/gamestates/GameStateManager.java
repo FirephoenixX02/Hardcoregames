@@ -1,16 +1,16 @@
 package de.amin.gamestates;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.KitManager;
 import de.amin.mechanics.ItemManager;
 
 public class GameStateManager {
 
-    private HG plugin;
-    private GameState[] gameStates;
+    private final SpeedHG plugin;
+    private final GameState[] gameStates;
     private GameState currentGameState;
 
-    public GameStateManager(HG plugin, KitManager kitManager, ItemManager itemManager){
+    public GameStateManager(SpeedHG plugin, KitManager kitManager, ItemManager itemManager){
         this.plugin = plugin;
         gameStates = new GameState[4];
 

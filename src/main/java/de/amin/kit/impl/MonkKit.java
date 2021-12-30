@@ -4,7 +4,7 @@ package de.amin.kit.impl;
 
 import de.amin.gamestates.GameStateManager;
 import de.amin.gamestates.LobbyState;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitManager;
 import de.amin.kit.KitSetting;
@@ -21,14 +21,14 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class MonkKit extends Kit implements Listener {
 
-    private KitManager kitManager;
-    private GameStateManager gameStateManager;
+    private final KitManager kitManager;
+    private final GameStateManager gameStateManager;
 
-    private KitSetting cooldown = new KitSetting(this, "cooldown", 15, 0, 100);
+    private final KitSetting cooldown = new KitSetting(this, "cooldown", 15, 0, 100);
 
     public MonkKit(){
-        kitManager = HG.INSTANCE.getKitManager();
-        gameStateManager = HG.INSTANCE.getGameStateManager();
+        kitManager = SpeedHG.INSTANCE.getKitManager();
+        gameStateManager = SpeedHG.INSTANCE.getGameStateManager();
     }
 
     @Override

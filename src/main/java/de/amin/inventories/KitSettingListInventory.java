@@ -2,7 +2,7 @@
 
 package de.amin.inventories;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitManager;
 import de.amin.utils.ItemBuilder;
@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 public class KitSettingListInventory implements InventoryProvider {
 
-    private final KitManager kitManager = HG.INSTANCE.getKitManager();
+    private final KitManager kitManager = SpeedHG.INSTANCE.getKitManager();
     private Pagination pagination;
 
     public static final SmartInventory INVENTORY = SmartInventory.builder()
@@ -31,7 +31,7 @@ public class KitSettingListInventory implements InventoryProvider {
             .provider(new KitSettingListInventory())
             .size(6, 9)
             .title(ChatColor.BLUE + "Select Kit")
-            .manager(HG.INSTANCE.getInventoryManager())
+            .manager(SpeedHG.INSTANCE.getInventoryManager())
             .build();
 
     @Override

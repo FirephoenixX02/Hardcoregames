@@ -2,7 +2,7 @@
 
 package de.amin.commands;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import org.bukkit.Bukkit;
 import org.bukkit.Effect;
 import org.bukkit.Location;
@@ -12,7 +12,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class AuraCommand implements CommandExecutor{
 
@@ -38,7 +37,7 @@ public class AuraCommand implements CommandExecutor{
     }
 
     private void run() {
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(HG.INSTANCE , new Runnable() {
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(SpeedHG.INSTANCE , new Runnable() {
             @Override
             public void run() {
                 for(Player p : Bukkit.getOnlinePlayers()) {

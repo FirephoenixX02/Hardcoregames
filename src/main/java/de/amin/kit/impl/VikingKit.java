@@ -2,7 +2,7 @@
 
 package de.amin.kit.impl;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitManager;
 import de.amin.kit.KitSetting;
@@ -22,7 +22,7 @@ public class VikingKit extends Kit implements Listener {
     private final double damageBoost;
 
     public VikingKit() {
-        kitManager = HG.INSTANCE.getKitManager();
+        kitManager = SpeedHG.INSTANCE.getKitManager();
         damageBoost = 2.0;
     }
 

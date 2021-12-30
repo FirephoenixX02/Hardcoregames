@@ -4,7 +4,7 @@ package de.amin.kit;
 
 import de.amin.inventories.StartItemInventory;
 import de.amin.gamestates.LobbyState;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.utils.ItemBuilder;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -19,10 +19,10 @@ import java.util.HashMap;
 public class StartItems implements Listener {
 
     public ArrayList<ItemStack> startItems;
-    private HashMap<String, ItemStack> players;
+    private final HashMap<String, ItemStack> players;
 
     public static final String DISPLAY_NAME = "§bStart Item Selecor";
-    private ArrayList<String> bucketLore;
+    private final ArrayList<String> bucketLore;
 
 
     public StartItems(){
@@ -65,7 +65,7 @@ public class StartItems implements Listener {
 
     @EventHandler
     public void onInteract(PlayerInteractEvent e){
-        if(!(HG.INSTANCE.getGameStateManager().getCurrentGameState() instanceof LobbyState))return;
+        if(!(SpeedHG.INSTANCE.getGameStateManager().getCurrentGameState() instanceof LobbyState))return;
         if(!e.hasItem() || !e.getItem().getItemMeta().getDisplayName().equalsIgnoreCase(DISPLAY_NAME))return;
         StartItemInventory.INVENTORY.open(e.getPlayer());
     }

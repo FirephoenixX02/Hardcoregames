@@ -2,7 +2,7 @@
 
 package de.amin.commands;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.mechanics.AdminMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -11,10 +11,10 @@ import org.bukkit.entity.Player;
 
 public class AdminCommand implements CommandExecutor {
 
-    private AdminMode adminMode;
+    private final AdminMode adminMode;
 
     public AdminCommand(){
-        adminMode = HG.INSTANCE.getAdminMode();
+        adminMode = SpeedHG.INSTANCE.getAdminMode();
     }
 
     @Override

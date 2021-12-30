@@ -2,7 +2,7 @@
 
 package de.amin.feast;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
@@ -23,12 +23,12 @@ public class Feast {
 
 
 
-    private int xPos;
-    private int yPos;
-    private int zPos;
+    private final int xPos;
+    private final int yPos;
+    private final int zPos;
     private int taskID;
-    private ArrayList<Block> blocks;
-    private ArrayList<ItemStack> feastLoot;
+    private final ArrayList<Block> blocks;
+    private final ArrayList<ItemStack> feastLoot;
     int secondsToFeast;
 
     public Feast() {
@@ -98,7 +98,7 @@ public class Feast {
     public void runFeast() {
         isAnnounced = true;
         spawnFeast();
-        taskID = Bukkit.getScheduler().scheduleSyncRepeatingTask(HG.INSTANCE, new Runnable() {
+        taskID = Bukkit.getScheduler().scheduleSyncRepeatingTask(SpeedHG.INSTANCE, new Runnable() {
             @Override
             public void run() {
                 if(Feast.isFeast)Bukkit.getScheduler().cancelTask(taskID);

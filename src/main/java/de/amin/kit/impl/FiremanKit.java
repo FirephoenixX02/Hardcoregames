@@ -1,6 +1,6 @@
 package de.amin.kit.impl;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitManager;
 import de.amin.kit.KitSetting;
@@ -16,10 +16,10 @@ import java.util.ArrayList;
 
 public class FiremanKit extends Kit implements Listener {
 
-    private KitManager km;
+    private final KitManager km;
 
     public FiremanKit(){
-        km = HG.INSTANCE.getKitManager();
+        km = SpeedHG.INSTANCE.getKitManager();
     }
 
     @Override

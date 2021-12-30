@@ -2,7 +2,7 @@
 
 package de.amin.inventories;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitManager;
 import de.amin.utils.ItemBuilder;
@@ -18,9 +18,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class KitSearchInventory implements InventoryProvider {
 
-    private final KitManager kitManager = HG.INSTANCE.getKitManager();
+    private final KitManager kitManager = SpeedHG.INSTANCE.getKitManager();
     private Pagination pagination;
-    private String s;
+    private final String s;
 
     public KitSearchInventory(String query) {
         s = query;

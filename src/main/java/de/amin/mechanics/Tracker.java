@@ -2,8 +2,7 @@
 
 package de.amin.mechanics;
 
-import com.avaje.ebean.validation.NotNull;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -14,13 +13,13 @@ import org.bukkit.event.player.PlayerInteractEvent;
 
 public class Tracker implements Listener {
 
-    private final AdminMode adminMode = HG.INSTANCE.getAdminMode();
+    private final AdminMode adminMode = SpeedHG.INSTANCE.getAdminMode();
     private final double minDistance = 20.0;
 
     @EventHandler
     public void onInteract(PlayerInteractEvent e) {
         Player player = e.getPlayer();
-        if(HG.INSTANCE.getAdminMode().isAdminMode(player))return;
+        if(SpeedHG.INSTANCE.getAdminMode().isAdminMode(player))return;
         if (e.hasItem() && e.getItem().getType().equals(Material.COMPASS)) {
             Player target = getNearestPlayer(player);
             if (!(target == null)) {
@@ -37,7 +36,7 @@ public class Tracker implements Listener {
     private Player getNearestPlayer(Player player){
         double distance = Double.MAX_VALUE;
         Player target = null;
-        for(Player current : HG.INSTANCE.getPlayers()){
+        for(Player current : SpeedHG.INSTANCE.getPlayers()){
                 if(current!=player && current.getLocation().distance(player.getLocation())<distance
                 && current.getLocation().distance(player.getLocation())>=minDistance){
                     target = current;

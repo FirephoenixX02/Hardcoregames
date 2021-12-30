@@ -11,7 +11,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class ItemBuilder {
 
-    private ItemStack item;
+    private final ItemStack item;
 
     public ItemBuilder(ItemStack itemstack) {
         this.item = itemstack;
@@ -61,11 +61,7 @@ public class ItemBuilder {
 
     public ItemBuilder setUnbreakable(boolean unbreakable) {
         ItemMeta meta = this.item.getItemMeta();
-        if(unbreakable) {
-            meta.spigot().setUnbreakable(true);
-        } else {
-            meta.spigot().setUnbreakable(false);
-        }
+        meta.spigot().setUnbreakable(unbreakable);
 
         this.item.setItemMeta(meta);
         return new ItemBuilder(this.item);
@@ -86,9 +82,7 @@ public class ItemBuilder {
 
         if(item.hasItemMeta()) {
             if(item.getItemMeta().hasDisplayName()) {
-                if(item.getItemMeta().getDisplayName().equals(name)) {
-                    return true;
-                }
+                return item.getItemMeta().getDisplayName().equals(name);
             }
         }
 

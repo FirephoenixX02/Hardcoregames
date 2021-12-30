@@ -2,7 +2,7 @@
 
 package de.amin.kit.impl;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitManager;
 import de.amin.kit.KitSetting;
@@ -27,10 +27,10 @@ public class ScoutKit extends Kit implements Listener {
 
     private static long potionDelay;
 
-    private KitSetting potionAmount = new KitSetting(this, "Potion Amount", 2, 0, 100);
+    private final KitSetting potionAmount = new KitSetting(this, "Potion Amount", 2, 0, 100);
 
     public ScoutKit() {
-        kitManager = HG.INSTANCE.getKitManager();
+        kitManager = SpeedHG.INSTANCE.getKitManager();
         potionDelay = 5*60;
         effect = PotionType.SPEED;
     }
@@ -95,7 +95,7 @@ public class ScoutKit extends Kit implements Listener {
 
 
     public static void speedPotionRunnable(ItemManager itemManager) {
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(HG.INSTANCE, new Runnable() {
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(SpeedHG.INSTANCE, new Runnable() {
             @Override
             public void run() {
                 PotionType effect = PotionType.SPEED;
@@ -107,8 +107,8 @@ public class ScoutKit extends Kit implements Listener {
                 speedPotion.apply(potion);
                 potion.setAmount(2);
 
-                for (Player player : HG.INSTANCE.getPlayers()) {
-                    if (HG.INSTANCE.getKitManager().getKitHashMap().get(player.getName()) instanceof ScoutKit) {
+                for (Player player : SpeedHG.INSTANCE.getPlayers()) {
+                    if (SpeedHG.INSTANCE.getKitManager().getKitHashMap().get(player.getName()) instanceof ScoutKit) {
                         itemManager.giveItemsLater(player, potion);
                         player.sendMessage("§aYou have been given two speed pots.");
                     }

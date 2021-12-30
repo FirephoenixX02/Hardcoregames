@@ -3,7 +3,7 @@
 package de.amin.feast;
 
 import de.amin.gamestates.IngameState;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.mechanics.WorldBorder;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -21,14 +21,14 @@ public class Bonusfeast {
 
     public static boolean isBonusFeast = false;
 
-    private Biome biome;
-    private int radius;
-    private ArrayList<ItemStack> loot;
+    private final Biome biome;
+    private final int radius;
+    private final ArrayList<ItemStack> loot;
 
     public Bonusfeast(){
         isBonusFeast = true;
         radius = 20;
-        loot = ((IngameState)HG.INSTANCE.getGameStateManager().getCurrentGameState()).getTimer().getFeast().getFeastLoot();
+        loot = ((IngameState) SpeedHG.INSTANCE.getGameStateManager().getCurrentGameState()).getTimer().getFeast().getFeastLoot();
         int x = ThreadLocalRandom.current().nextInt(WorldBorder.size*-1 + 20, WorldBorder.size-20);
         int z = ThreadLocalRandom.current().nextInt(WorldBorder.size*-1 + 20, WorldBorder.size-20);
         int y = Bukkit.getWorld("world").getHighestBlockYAt(x,z);
@@ -36,7 +36,7 @@ public class Bonusfeast {
         Location location = new Location(Bukkit.getWorld("world"), x,y,z);
         biome = location.getBlock().getBiome();
 
-        Bukkit.broadcastMessage(HG.INSTANCE.PREFIX + "§7The Bonusfeast spawned in a " + biome.toString() + " biome.");
+        Bukkit.broadcastMessage(SpeedHG.INSTANCE.PREFIX + "§7The Bonusfeast spawned in a " + biome.toString() + " biome.");
         Bukkit.getOnlinePlayers().forEach(e -> e.playSound(e.getLocation(), Sound.NOTE_BASS, 1, 1));
 
         spawnCircle(location, radius);

@@ -2,7 +2,7 @@
 
 package de.amin.mechanics;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -20,7 +20,7 @@ public class SpectatorMode implements Listener {
     }
 
     public void activate(Player player) {
-        HG.INSTANCE.getPlayers().remove(player);
+        SpeedHG.INSTANCE.getPlayers().remove(player);
         player.setGameMode(GameMode.SPECTATOR);
         players.add(player.getName());
     }

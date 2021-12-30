@@ -1,6 +1,6 @@
 package de.amin.kit;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -16,11 +16,11 @@ public abstract class Kit {
     public abstract KitSetting[] getKitSettings();
 
     public void activateCooldown(Player player){
-        HG.INSTANCE.getCooldown().put(player.getName(), System.currentTimeMillis());
+        SpeedHG.INSTANCE.getCooldown().put(player.getName(), System.currentTimeMillis());
     }
 
     public boolean isCooldown(Player player, double COOLDOWN){
-        HashMap<String, Long> cooldown = HG.INSTANCE.getCooldown();
+        HashMap<String, Long> cooldown = SpeedHG.INSTANCE.getCooldown();
         if(cooldown.containsKey(player.getName())){
             long be = cooldown.get(player.getName());
             double rest = ((be + (COOLDOWN*1000)) - System.currentTimeMillis());

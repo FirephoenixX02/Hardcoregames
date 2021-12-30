@@ -3,7 +3,7 @@ package de.amin.mechanics;
 import de.amin.feast.Bonusfeast;
 import de.amin.feast.Feast;
 import de.amin.gamestates.*;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -15,12 +15,12 @@ import org.bukkit.scoreboard.ScoreboardManager;
 public class Scoreboards {
 
     private static final ScoreboardManager manager = Bukkit.getScoreboardManager();
-    private static final GameStateManager gameStateManager = HG.INSTANCE.getGameStateManager();
-    private static final String ip = HG.INSTANCE.getConfig().getString("scoreboard.ip").replace("&", "§");
-    private static final String title = HG.INSTANCE.getConfig().getString("scoreboard.title").replace("&", "§");
+    private static final GameStateManager gameStateManager = SpeedHG.INSTANCE.getGameStateManager();
+    private static final String ip = SpeedHG.INSTANCE.getConfig().getString("scoreboard.ip").replace("&", "§");
+    private static final String title = SpeedHG.INSTANCE.getConfig().getString("scoreboard.title").replace("&", "§");
 
     public static void pregameScoreboard(Player player){
-        Scoreboard scoreboard = (Scoreboard) manager.getNewScoreboard();
+        Scoreboard scoreboard = manager.getNewScoreboard();
 
         Objective objective = scoreboard.registerNewObjective("pregame", "dummy");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
@@ -30,18 +30,18 @@ public class Scoreboards {
             objective.getScore(" " + (formatTime(((LobbyState) gameStateManager.getCurrentGameState()).getCountdown().getSeconds()))).setScore(9);
         }
         objective.getScore("    ").setScore(8);
-        objective.getScore("§9§lKit:§r §f" + HG.INSTANCE.getKitManager().getKitHashMap().get(player.getName()).getName()).setScore(7);
-        objective.getScore("§b§lKills:§r §f" + HG.INSTANCE.getKills().get(player.getName())).setScore(6);
+        objective.getScore("§9§lKit:§r §f" + SpeedHG.INSTANCE.getKitManager().getKitHashMap().get(player.getName()).getName()).setScore(7);
+        objective.getScore("§b§lKills:§r §f" + SpeedHG.INSTANCE.getKills().get(player.getName())).setScore(6);
         objective.getScore("  ").setScore(5);
         objective.getScore(ChatColor.DARK_PURPLE + ChatColor.BOLD.toString() + "Players").setScore(4);
-        objective.getScore(" §f" + HG.INSTANCE.getPlayers().size() + "/"  + HG.INSTANCE.getPlayers().size()).setScore(3);
+        objective.getScore(" §f" + SpeedHG.INSTANCE.getPlayers().size() + "/"  + SpeedHG.INSTANCE.getPlayers().size()).setScore(3);
         objective.getScore(" ").setScore(2);
         objective.getScore(ip).setScore(1);
         player.setScoreboard(scoreboard);
     }
 
     public static void invincibilityScoreboard(Player player){
-        Scoreboard scoreboard = (Scoreboard) manager.getNewScoreboard();
+        Scoreboard scoreboard = manager.getNewScoreboard();
 
         Objective objective = scoreboard.registerNewObjective("invincibility", "dummy");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
@@ -51,18 +51,18 @@ public class Scoreboards {
             objective.getScore(" " + (formatTime(((InvincibilityState) gameStateManager.getCurrentGameState()).getCountdown().getSeconds()))).setScore(9);
         }
         objective.getScore("    ").setScore(8);
-        objective.getScore("§9§lKit:§r §f" + HG.INSTANCE.getKitManager().getKitHashMap().get(player.getName()).getName()).setScore(7);
-        objective.getScore("§b§lKills:§r §f" + HG.INSTANCE.getKills().get(player.getName())).setScore(6);
+        objective.getScore("§9§lKit:§r §f" + SpeedHG.INSTANCE.getKitManager().getKitHashMap().get(player.getName()).getName()).setScore(7);
+        objective.getScore("§b§lKills:§r §f" + SpeedHG.INSTANCE.getKills().get(player.getName())).setScore(6);
         objective.getScore("  ").setScore(5);
         objective.getScore(ChatColor.DARK_PURPLE + ChatColor.BOLD.toString() + "Players").setScore(4);
-        objective.getScore(" §f" + HG.INSTANCE.getPlayers().size() + "/"  + HG.INSTANCE.getPlayersAtStart()).setScore(3);
+        objective.getScore(" §f" + SpeedHG.INSTANCE.getPlayers().size() + "/"  + SpeedHG.INSTANCE.getPlayersAtStart()).setScore(3);
         objective.getScore(" ").setScore(2);
         objective.getScore(ip).setScore(1);
         player.setScoreboard(scoreboard);
     }
 
     public static void ingameScoreboard(Player player){
-        Scoreboard scoreboard = (Scoreboard) manager.getNewScoreboard();
+        Scoreboard scoreboard = manager.getNewScoreboard();
 
         Objective objective = scoreboard.registerNewObjective("ingame", "dummy");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
@@ -72,11 +72,11 @@ public class Scoreboards {
             objective.getScore(" " + (formatTime(((IngameState) gameStateManager.getCurrentGameState()).getTimer().getSeconds()))).setScore(9);
         }
         objective.getScore("    ").setScore(8);
-        objective.getScore("§9§lKit:§r §f" + HG.INSTANCE.getKitManager().getKitHashMap().get(player.getName()).getName()).setScore(7);
-        objective.getScore("§b§lKills:§r §f" + HG.INSTANCE.getKills().get(player.getName())).setScore(6);
+        objective.getScore("§9§lKit:§r §f" + SpeedHG.INSTANCE.getKitManager().getKitHashMap().get(player.getName()).getName()).setScore(7);
+        objective.getScore("§b§lKills:§r §f" + SpeedHG.INSTANCE.getKills().get(player.getName())).setScore(6);
         objective.getScore("  ").setScore(5);
         objective.getScore(ChatColor.DARK_PURPLE + ChatColor.BOLD.toString() + "Players").setScore(4);
-        objective.getScore(" §f" + HG.INSTANCE.getPlayers().size() + "/"  + HG.INSTANCE.getPlayersAtStart()).setScore(3);
+        objective.getScore(" §f" + SpeedHG.INSTANCE.getPlayers().size() + "/"  + SpeedHG.INSTANCE.getPlayersAtStart()).setScore(3);
         objective.getScore(" ").setScore(2);
         objective.getScore(ip).setScore(1);
         player.setScoreboard(scoreboard);
@@ -84,7 +84,7 @@ public class Scoreboards {
 
     public static void feastAnnouncedScoreboard(Player player){
         Scoreboard scoreboard = manager.getNewScoreboard();
-        Feast feast = ((IngameState) HG.INSTANCE.getGameStateManager().getCurrentGameState()).getTimer().getFeast();
+        Feast feast = ((IngameState) SpeedHG.INSTANCE.getGameStateManager().getCurrentGameState()).getTimer().getFeast();
 
         Objective objective = scoreboard.registerNewObjective("ingame", "dummy");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
@@ -94,11 +94,11 @@ public class Scoreboards {
             objective.getScore(" " + (formatTime(((IngameState) gameStateManager.getCurrentGameState()).getTimer().getSeconds()))).setScore(13);
         }
         objective.getScore("    ").setScore(12);
-        objective.getScore("§9§lKit:§r §f" + HG.INSTANCE.getKitManager().getKitHashMap().get(player.getName()).getName()).setScore(11);
-        objective.getScore("§b§lKills:§r §f" + HG.INSTANCE.getKills().get(player.getName())).setScore(10);
+        objective.getScore("§9§lKit:§r §f" + SpeedHG.INSTANCE.getKitManager().getKitHashMap().get(player.getName()).getName()).setScore(11);
+        objective.getScore("§b§lKills:§r §f" + SpeedHG.INSTANCE.getKills().get(player.getName())).setScore(10);
         objective.getScore("  ").setScore(9);
         objective.getScore(ChatColor.DARK_PURPLE + ChatColor.BOLD.toString() + "Players").setScore(8);
-        objective.getScore(" §f" + HG.INSTANCE.getPlayers().size() + "/"  + HG.INSTANCE.getPlayersAtStart()).setScore(7);
+        objective.getScore(" §f" + SpeedHG.INSTANCE.getPlayers().size() + "/"  + SpeedHG.INSTANCE.getPlayersAtStart()).setScore(7);
         objective.getScore(" ").setScore(6);
         objective.getScore("§6§lFeast").setScore(5);
         objective.getScore("§f  at [" + feast.getxPos() + ", " + feast.getyPos() + ", " + feast.getzPos() + "]").setScore(4);
@@ -111,7 +111,7 @@ public class Scoreboards {
     public static void feastSpawnedScoreboard(Player player){
         if(!(gameStateManager.getCurrentGameState() instanceof IngameState))return;
         Scoreboard scoreboard = manager.getNewScoreboard();
-        Feast feast = ((IngameState) HG.INSTANCE.getGameStateManager().getCurrentGameState()).getTimer().getFeast();
+        Feast feast = ((IngameState) SpeedHG.INSTANCE.getGameStateManager().getCurrentGameState()).getTimer().getFeast();
 
         Objective objective = scoreboard.registerNewObjective("ingame", "dummy");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
@@ -121,11 +121,11 @@ public class Scoreboards {
             objective.getScore(" " + (formatTime(((IngameState) gameStateManager.getCurrentGameState()).getTimer().getSeconds()))).setScore(13);
         }
         objective.getScore("    ").setScore(12);
-        objective.getScore("§9§lKit:§r §f" + HG.INSTANCE.getKitManager().getKitHashMap().get(player.getName()).getName()).setScore(11);
-        objective.getScore("§b§lKills:§r §f" + HG.INSTANCE.getKills().get(player.getName())).setScore(10);
+        objective.getScore("§9§lKit:§r §f" + SpeedHG.INSTANCE.getKitManager().getKitHashMap().get(player.getName()).getName()).setScore(11);
+        objective.getScore("§b§lKills:§r §f" + SpeedHG.INSTANCE.getKills().get(player.getName())).setScore(10);
         objective.getScore("  ").setScore(9);
         objective.getScore(ChatColor.DARK_PURPLE + ChatColor.BOLD.toString() + "Players").setScore(8);
-        objective.getScore(" §f" + HG.INSTANCE.getPlayers().size() + "/"  + HG.INSTANCE.getPlayersAtStart()).setScore(7);
+        objective.getScore(" §f" + SpeedHG.INSTANCE.getPlayers().size() + "/"  + SpeedHG.INSTANCE.getPlayersAtStart()).setScore(7);
         objective.getScore(" ").setScore(6);
         objective.getScore("§6§lFeast").setScore(5);
         objective.getScore("§f  at [" + feast.getxPos() + ", " + feast.getyPos() + ", " + feast.getzPos() + "]").setScore(4);
@@ -140,7 +140,7 @@ public class Scoreboards {
         int seconds = ((IngameState)gameStateManager.getCurrentGameState()).getTimer().getSeconds();
         int gameEnd = ((IngameState)gameStateManager.getCurrentGameState()).getTimer().getGameEndTime();
         Scoreboard scoreboard = manager.getNewScoreboard();
-        Feast feast = ((IngameState) HG.INSTANCE.getGameStateManager().getCurrentGameState()).getTimer().getFeast();
+        Feast feast = ((IngameState) SpeedHG.INSTANCE.getGameStateManager().getCurrentGameState()).getTimer().getFeast();
 
         Objective objective = scoreboard.registerNewObjective("ingame", "dummy");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
@@ -150,11 +150,11 @@ public class Scoreboards {
             objective.getScore(" " + (formatTime(((IngameState) gameStateManager.getCurrentGameState()).getTimer().getSeconds()))).setScore(13);
         }
         objective.getScore("    ").setScore(11);
-        objective.getScore("§9§lKit:§r §f" + HG.INSTANCE.getKitManager().getKitHashMap().get(player.getName()).getName()).setScore(10);
-        objective.getScore("§b§lKills:§r §f" + HG.INSTANCE.getKills().get(player.getName())).setScore(9);
+        objective.getScore("§9§lKit:§r §f" + SpeedHG.INSTANCE.getKitManager().getKitHashMap().get(player.getName()).getName()).setScore(10);
+        objective.getScore("§b§lKills:§r §f" + SpeedHG.INSTANCE.getKills().get(player.getName())).setScore(9);
         objective.getScore("  ").setScore(8);
         objective.getScore(ChatColor.DARK_PURPLE + ChatColor.BOLD.toString() + "Players").setScore(7);
-        objective.getScore(" §f" + HG.INSTANCE.getPlayers().size() + "/"  + HG.INSTANCE.getPlayersAtStart()).setScore(6);
+        objective.getScore(" §f" + SpeedHG.INSTANCE.getPlayers().size() + "/"  + SpeedHG.INSTANCE.getPlayersAtStart()).setScore(6);
         objective.getScore(" ").setScore(5);
         objective.getScore("§6§lGame End").setScore(4);
         objective.getScore("§f  in " + formatTime(gameEnd-seconds)).setScore(3);
@@ -168,7 +168,7 @@ public class Scoreboards {
         int seconds = ((IngameState)gameStateManager.getCurrentGameState()).getTimer().getSeconds();
         int gameEnd = ((IngameState)gameStateManager.getCurrentGameState()).getTimer().getGameEndTime();
         Scoreboard scoreboard = manager.getNewScoreboard();
-        Pit pit = ((IngameState) HG.INSTANCE.getGameStateManager().getCurrentGameState()).getTimer().getPit();
+        Pit pit = ((IngameState) SpeedHG.INSTANCE.getGameStateManager().getCurrentGameState()).getTimer().getPit();
         int timeToPit = (((IngameState)gameStateManager.getCurrentGameState()).getTimer().getPitTime()) - seconds + 5*60;
 
         Objective objective = scoreboard.registerNewObjective("ingame", "dummy");
@@ -179,11 +179,11 @@ public class Scoreboards {
             objective.getScore(" " + (formatTime(((IngameState) gameStateManager.getCurrentGameState()).getTimer().getSeconds()))).setScore(13);
         }
         objective.getScore("    ").setScore(11);
-        objective.getScore("§9§lKit:§r §f" + HG.INSTANCE.getKitManager().getKitHashMap().get(player.getName()).getName()).setScore(10);
-        objective.getScore("§b§lKills:§r §f" + HG.INSTANCE.getKills().get(player.getName())).setScore(9);
+        objective.getScore("§9§lKit:§r §f" + SpeedHG.INSTANCE.getKitManager().getKitHashMap().get(player.getName()).getName()).setScore(10);
+        objective.getScore("§b§lKills:§r §f" + SpeedHG.INSTANCE.getKills().get(player.getName())).setScore(9);
         objective.getScore("  ").setScore(8);
         objective.getScore(ChatColor.DARK_PURPLE + ChatColor.BOLD.toString() + "Players").setScore(7);
-        objective.getScore(" §f" + HG.INSTANCE.getPlayers().size() + "/"  + HG.INSTANCE.getPlayersAtStart()).setScore(6);
+        objective.getScore(" §f" + SpeedHG.INSTANCE.getPlayers().size() + "/"  + SpeedHG.INSTANCE.getPlayersAtStart()).setScore(6);
         objective.getScore(" ").setScore(5);
         objective.getScore("§6§lPit").setScore(4);
         objective.getScore("§f  in " + formatTime(pit.getSeconds())).setScore(3);
@@ -206,11 +206,11 @@ public class Scoreboards {
             objective.getScore(" " + (formatTime(seconds))).setScore(13);
         }
         objective.getScore("    ").setScore(11);
-        objective.getScore("§9§lKit:§r §f" + HG.INSTANCE.getKitManager().getKitHashMap().get(player.getName()).getName()).setScore(10);
-        objective.getScore("§b§lKills:§r §f" + HG.INSTANCE.getKills().get(player.getName())).setScore(9);
+        objective.getScore("§9§lKit:§r §f" + SpeedHG.INSTANCE.getKitManager().getKitHashMap().get(player.getName()).getName()).setScore(10);
+        objective.getScore("§b§lKills:§r §f" + SpeedHG.INSTANCE.getKills().get(player.getName())).setScore(9);
         objective.getScore("  ").setScore(8);
         objective.getScore(ChatColor.DARK_PURPLE + ChatColor.BOLD.toString() + "Players").setScore(7);
-        objective.getScore(" §f" + HG.INSTANCE.getPlayers().size() + "/"  + HG.INSTANCE.getPlayersAtStart()).setScore(6);
+        objective.getScore(" §f" + SpeedHG.INSTANCE.getPlayers().size() + "/"  + SpeedHG.INSTANCE.getPlayersAtStart()).setScore(6);
         objective.getScore(" ").setScore(5);
         objective.getScore("§6§lBonusfeast").setScore(4);
         objective.getScore("§f  in " + bonusfeast.getBiome().toString()).setScore(3);

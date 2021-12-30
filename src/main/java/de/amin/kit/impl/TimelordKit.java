@@ -4,7 +4,7 @@ package de.amin.kit.impl;
 
 import de.amin.gamestates.GameStateManager;
 import de.amin.gamestates.IngameState;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitManager;
 import de.amin.kit.KitSetting;
@@ -32,13 +32,13 @@ public class TimelordKit extends Kit implements Listener {
 
     private final ArrayList<String> frozenPlayers;
 
-    private KitSetting cooldown = new KitSetting(this, "cooldown", 50, 0, 100);
-    private KitSetting frozenTime = new KitSetting(this, "Frozen Time", 10, 0, 100);
-    private KitSetting radius = new KitSetting(this, "radius", 7, 0, 100);
+    private final KitSetting cooldown = new KitSetting(this, "cooldown", 50, 0, 100);
+    private final KitSetting frozenTime = new KitSetting(this, "Frozen Time", 10, 0, 100);
+    private final KitSetting radius = new KitSetting(this, "radius", 7, 0, 100);
 
     public TimelordKit() {
-        kitManager = HG.INSTANCE.getKitManager();
-        gameStateManager = HG.INSTANCE.getGameStateManager();
+        kitManager = SpeedHG.INSTANCE.getKitManager();
+        gameStateManager = SpeedHG.INSTANCE.getGameStateManager();
 
         frozenPlayers = new ArrayList<>();
     }
@@ -95,7 +95,7 @@ public class TimelordKit extends Kit implements Listener {
                 entity.sendMessage("§c§lYour body stops moving...");
                 entity.sendMessage("§c§lTime stops around you...");
                 entity.sendMessage("§c§lIt's a Timelord!");
-                Bukkit.getScheduler().scheduleSyncDelayedTask(HG.INSTANCE, () -> frozenPlayers.remove(entity.getName()), (long) (frozenTime.getValue() * 20L));
+                Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedHG.INSTANCE, () -> frozenPlayers.remove(entity.getName()), (long) (frozenTime.getValue() * 20L));
             }
         }
         if(count==0){

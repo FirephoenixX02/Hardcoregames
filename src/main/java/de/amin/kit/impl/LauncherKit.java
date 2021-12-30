@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class LauncherKit extends Kit {
 
-    private KitSetting startAmount = new KitSetting(this, "start amount", 20, 0, 100);
+    private final KitSetting startAmount = new KitSetting(this, "start amount", 20, 0, 100);
 
     @Override
     public void giveItems(Player p) {

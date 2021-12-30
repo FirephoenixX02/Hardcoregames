@@ -1,7 +1,7 @@
 package de.amin.kit.impl;
 
 import de.amin.gamestates.IngameState;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitSetting;
 import de.amin.utils.ItemBuilder;
@@ -10,7 +10,6 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
@@ -19,8 +18,8 @@ import java.util.ArrayList;
 
 public class HulkKit extends Kit implements Listener {
 
-    private KitSetting boost = new KitSetting(this, "boost", 1.5, 0, 20);
-    private KitSetting cooldown = new KitSetting(this, "cooldown", 5, 0, 100);
+    private final KitSetting boost = new KitSetting(this, "boost", 1.5, 0, 20);
+    private final KitSetting cooldown = new KitSetting(this, "cooldown", 5, 0, 100);
 
     @Override
     public void giveItems(Player p) {
@@ -55,8 +54,8 @@ public class HulkKit extends Kit implements Listener {
         Player player = e.getPlayer();
         Entity victim = e.getRightClicked();
         if(!e.getPlayer().getItemInHand().getType().equals(Material.AIR))
-        if(!(HG.INSTANCE.getGameStateManager().getCurrentGameState() instanceof IngameState))return;
-        if(!(HG.INSTANCE.getKitManager().getKitHashMap().get(player.getName()) instanceof HulkKit))return;
+        if(!(SpeedHG.INSTANCE.getGameStateManager().getCurrentGameState() instanceof IngameState))return;
+        if(!(SpeedHG.INSTANCE.getKitManager().getKitHashMap().get(player.getName()) instanceof HulkKit))return;
         if(isCooldown(player, cooldown.getValue()))return;
         player.setPassenger(victim);
         if(victim instanceof Player){
@@ -68,7 +67,7 @@ public class HulkKit extends Kit implements Listener {
     @EventHandler
     public void onThrow(PlayerInteractEvent e){
         Player player = e.getPlayer();
-        if(!(HG.INSTANCE.getKitManager().getKitHashMap().get(player.getName()) instanceof HulkKit))return;
+        if(!(SpeedHG.INSTANCE.getKitManager().getKitHashMap().get(player.getName()) instanceof HulkKit))return;
         if(player.getPassenger() ==null)return;
         Entity passenger = player.getPassenger();
         player.eject();

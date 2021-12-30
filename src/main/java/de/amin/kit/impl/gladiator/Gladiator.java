@@ -2,7 +2,7 @@
 
 package de.amin.kit.impl.gladiator;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.KitSetting;
 import org.bukkit.*;
 import org.bukkit.block.Block;
@@ -50,7 +50,7 @@ public class Gladiator implements Listener {
 
     public void spawn() {
         for (int i = 0; i < (int) KitSetting.get(new GladiatorKit(), "height"); i+=1) {
-            Bukkit.getScheduler().scheduleSyncDelayedTask(HG.INSTANCE, () -> {
+            Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedHG.INSTANCE, () -> {
                 status++;
                 if(status == 1 ||status == (int) KitSetting.get(new GladiatorKit() , "height") - 1){
                     buildPlane(status);
@@ -97,7 +97,7 @@ public class Gladiator implements Listener {
     }
 
     private void run() {
-        taskID = Bukkit.getScheduler().scheduleSyncRepeatingTask(HG.INSTANCE, new Runnable() {
+        taskID = Bukkit.getScheduler().scheduleSyncRepeatingTask(SpeedHG.INSTANCE, new Runnable() {
             @Override
             public void run() {
                 Location loc1 = player1.getLocation();

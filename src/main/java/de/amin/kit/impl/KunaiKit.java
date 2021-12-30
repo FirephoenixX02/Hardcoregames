@@ -2,7 +2,7 @@
 
 package de.amin.kit.impl;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitManager;
 import de.amin.kit.KitSetting;
@@ -23,16 +23,16 @@ import java.util.HashMap;
 
 public class KunaiKit extends Kit implements Listener {
 
-    private HashMap<String, Arrow> kunais;
+    private final HashMap<String, Arrow> kunais;
 
-    private KitManager kitManager;
+    private final KitManager kitManager;
 
-    private KitSetting cooldown = new KitSetting(this, "cooldown", 10, 0, 100);
+    private final KitSetting cooldown = new KitSetting(this, "cooldown", 10, 0, 100);
 
     public KunaiKit(){
         kunais = new HashMap<>();
 
-        kitManager = HG.INSTANCE.getKitManager();
+        kitManager = SpeedHG.INSTANCE.getKitManager();
     }
 
     @Override

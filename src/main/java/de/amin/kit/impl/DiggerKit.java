@@ -3,7 +3,7 @@ package de.amin.kit.impl;
 import de.amin.feast.Feast;
 import de.amin.gamestates.GameStateManager;
 import de.amin.gamestates.IngameState;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitManager;
 import de.amin.kit.KitSetting;
@@ -25,7 +25,7 @@ public class DiggerKit extends Kit implements Listener {
     private final int[] yOff = new int[]{0, -1, -2, -3, -4, -5};
     private final int[] zOff = new int[]{-2, -1, 0, 1, 2};
 
-    private KitSetting cooldown = new KitSetting(this, "cooldown", 10, 0, 100);
+    private final KitSetting cooldown = new KitSetting(this, "cooldown", 10, 0, 100);
 
 
     @Override
@@ -61,8 +61,8 @@ public class DiggerKit extends Kit implements Listener {
         if (!e.getBlock().getType().equals(Material.DRAGON_EGG)) return;
 
         Player player = e.getPlayer();
-        GameStateManager gameStateManager = HG.INSTANCE.getGameStateManager();
-        KitManager kitManager = HG.INSTANCE.getKitManager();
+        GameStateManager gameStateManager = SpeedHG.INSTANCE.getGameStateManager();
+        KitManager kitManager = SpeedHG.INSTANCE.getKitManager();
 
         if (!(kitManager.getKitHashMap().get(player.getName()) instanceof DiggerKit)) return;
         if (!(gameStateManager.getCurrentGameState() instanceof IngameState)) {
@@ -75,7 +75,7 @@ public class DiggerKit extends Kit implements Listener {
         e.getBlock().setType(Material.AIR);
         player.sendMessage("Digging Hole..");
         activateCooldown(player);
-        Bukkit.getScheduler().scheduleSyncDelayedTask(HG.INSTANCE, new Runnable() {
+        Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedHG.INSTANCE, new Runnable() {
             @Override
             public void run() {
                 digHole(e.getBlock().getLocation());
@@ -92,7 +92,7 @@ public class DiggerKit extends Kit implements Listener {
 
     private void digHole(Location location) {
         Location temp = new Location(location.getWorld(), location.getX(), location.getY(), location.getZ());
-        Feast feast = ((IngameState) HG.INSTANCE.getGameStateManager().getCurrentGameState()).getTimer().getFeast();
+        Feast feast = ((IngameState) SpeedHG.INSTANCE.getGameStateManager().getCurrentGameState()).getTimer().getFeast();
 
         for (int h = 0; h <= xOff.length - 1; h++) {
             for (int i = 0; i <= yOff.length - 1; i++) {

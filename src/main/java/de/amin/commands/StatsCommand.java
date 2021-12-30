@@ -2,7 +2,7 @@
 
 package de.amin.commands;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.stats.StatsGetter;
 import de.amin.utils.UUIDFetcher;
 import org.bukkit.Bukkit;
@@ -15,7 +15,7 @@ import java.util.UUID;
 
 public class StatsCommand implements CommandExecutor {
 
-    private StatsGetter stats;
+    private final StatsGetter stats;
 
     public StatsCommand(StatsGetter stats) {
         this.stats = stats;
@@ -23,7 +23,7 @@ public class StatsCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
-        Bukkit.getScheduler().runTaskAsynchronously(HG.INSTANCE, new Runnable() {
+        Bukkit.getScheduler().runTaskAsynchronously(SpeedHG.INSTANCE, new Runnable() {
             @Override
             public void run() {
                 if((args.length > 1)){

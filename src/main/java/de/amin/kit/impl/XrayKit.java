@@ -2,7 +2,7 @@
 
 package de.amin.kit.impl;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitManager;
 import de.amin.kit.KitSetting;
@@ -19,7 +19,6 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 public class XrayKit extends Kit implements Listener {
@@ -27,12 +26,12 @@ public class XrayKit extends Kit implements Listener {
     private final KitManager kitManager;
 
 
-    private KitSetting cooldown = new KitSetting(this, "cooldown", 25, 0, 100);
-    private KitSetting duration = new KitSetting(this, "Duration", 7, 0, 100);
-    private KitSetting radius = new KitSetting(this, "radius", 20, 0, 100);
+    private final KitSetting cooldown = new KitSetting(this, "cooldown", 25, 0, 100);
+    private final KitSetting duration = new KitSetting(this, "Duration", 7, 0, 100);
+    private final KitSetting radius = new KitSetting(this, "radius", 20, 0, 100);
 
     public XrayKit() {
-        kitManager = HG.INSTANCE.getKitManager();
+        kitManager = SpeedHG.INSTANCE.getKitManager();
     }
 
     @Override
@@ -75,7 +74,7 @@ public class XrayKit extends Kit implements Listener {
 
         activateCooldown(player);
 
-        Bukkit.getScheduler().scheduleSyncDelayedTask(HG.INSTANCE, () -> revertBlocks(blocks), (long) (duration.getValue() * 20L));
+        Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedHG.INSTANCE, () -> revertBlocks(blocks), (long) (duration.getValue() * 20L));
     }
 
     private HashMap<Block, Material> turnBlocksIntoGlass(Player player) {
@@ -83,7 +82,7 @@ public class XrayKit extends Kit implements Listener {
 
         for (int i = 0; i <radius.getValue()*2 ; i++) {
             int y = (-i - 1);
-            Bukkit.getScheduler().scheduleSyncDelayedTask(HG.INSTANCE, () -> {
+            Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedHG.INSTANCE, () -> {
                 for (int x = (int) -radius.getValue(); x < radius.getValue(); x++) {
                     for (int z = (int) -radius.getValue(); z < radius.getValue(); z++) {
                         Block block = player.getLocation().clone().add(x, y, z).getBlock();

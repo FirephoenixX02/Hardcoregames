@@ -2,7 +2,7 @@
 
 package de.amin.commands;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -18,7 +18,7 @@ public class SkipcdCommand implements CommandExecutor {
                 player.sendMessage("§cInsufficient Permissions.");
                 return true;
             }
-            HG.INSTANCE.getCooldown().remove(player.getName());
+            SpeedHG.INSTANCE.getCooldown().remove(player.getName());
         }
         return false;
     }

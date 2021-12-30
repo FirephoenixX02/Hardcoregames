@@ -4,7 +4,7 @@ package de.amin.kit.impl;
 
 import de.amin.gamestates.GameStateManager;
 import de.amin.gamestates.IngameState;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitManager;
 import de.amin.kit.KitSetting;
@@ -24,8 +24,8 @@ public class AchillesKit extends Kit implements Listener {
     private final double woodToolDamageBoost;
 
     public AchillesKit(){
-        kitManager = HG.INSTANCE.getKitManager();
-        gameStateManager = HG.INSTANCE.getGameStateManager();
+        kitManager = SpeedHG.INSTANCE.getKitManager();
+        gameStateManager = SpeedHG.INSTANCE.getGameStateManager();
         woodToolDamageBoost = 2.0D;
     }
 

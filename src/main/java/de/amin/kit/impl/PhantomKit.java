@@ -1,7 +1,7 @@
 package de.amin.kit.impl;
 
 import de.amin.gamestates.GameStateManager;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitManager;
 import de.amin.kit.KitSetting;
@@ -21,11 +21,11 @@ import java.util.HashMap;
 public class PhantomKit extends Kit implements Listener {
 
     private double seconds;
-    private HashMap<String, Long> cooldownList = HG.INSTANCE.getCooldown();
+    private final HashMap<String, Long> cooldownList = SpeedHG.INSTANCE.getCooldown();
     private int taskID;
 
-    private KitSetting cooldown = new KitSetting(this, "cooldown", 20, 0, 100);
-    private KitSetting duration = new KitSetting(this, "duration", 10, 5, 100);
+    private final KitSetting cooldown = new KitSetting(this, "cooldown", 20, 0, 100);
+    private final KitSetting duration = new KitSetting(this, "duration", 10, 5, 100);
 
 
     @Override
@@ -58,10 +58,10 @@ public class PhantomKit extends Kit implements Listener {
 
     @EventHandler
     public void onInteract(PlayerInteractEvent e){
-        GameStateManager gameStateManager = HG.INSTANCE.getGameStateManager();
-        KitManager kitManager = HG.INSTANCE.getKitManager();
+        GameStateManager gameStateManager = SpeedHG.INSTANCE.getGameStateManager();
+        KitManager kitManager = SpeedHG.INSTANCE.getKitManager();
         Player p = e.getPlayer();
-        String prefix = HG.INSTANCE.PREFIX;
+        String prefix = SpeedHG.INSTANCE.PREFIX;
 
 
         if(!e.hasItem())return;
@@ -73,7 +73,7 @@ public class PhantomKit extends Kit implements Listener {
         p.setAllowFlight(true);
         p.setFlying(true);
         p.sendMessage("§7You are now in Flymode");
-        for(Player player : HG.INSTANCE.getPlayers()){
+        for(Player player : SpeedHG.INSTANCE.getPlayers()){
                 player.playSound(p.getLocation(), Sound.ENDERDRAGON_GROWL, 5.0F, 1.0F);
             }
         activateCooldown(e.getPlayer());
@@ -82,7 +82,7 @@ public class PhantomKit extends Kit implements Listener {
 
 
     public void startCountdown(Player p)    {
-        taskID = Bukkit.getScheduler().scheduleSyncRepeatingTask(HG.INSTANCE, new Runnable() {
+        taskID = Bukkit.getScheduler().scheduleSyncRepeatingTask(SpeedHG.INSTANCE, new Runnable() {
             int seconds = (int) duration.getValue();
             @Override
             public void run() {
@@ -95,7 +95,7 @@ public class PhantomKit extends Kit implements Listener {
                         p.playSound(p.getLocation(), Sound.GLASS, 1.0F, 1.0F);
                         p.sendMessage("§cYour Flight ended.");
                         p.setAllowFlight(false);
-                        HG.INSTANCE.getLaunchedPlayers().put(p.getName(), System.currentTimeMillis());
+                        SpeedHG.INSTANCE.getLaunchedPlayers().put(p.getName(), System.currentTimeMillis());
                         break;
                     default:
                         break;

@@ -13,8 +13,8 @@ import org.bukkit.entity.Player;
 
 public class ForceKitCommand implements CommandExecutor {
 
-    private GameStateManager gameStateManager;
-    private KitManager kitManager;
+    private final GameStateManager gameStateManager;
+    private final KitManager kitManager;
 
     public ForceKitCommand(GameStateManager gameStateManager, KitManager kitManager) {
         this.gameStateManager = gameStateManager;

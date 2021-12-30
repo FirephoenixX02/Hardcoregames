@@ -4,7 +4,7 @@ package de.amin.feast;
 
 import de.amin.gamestates.GameState;
 import de.amin.gamestates.IngameState;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,8 +17,8 @@ public class FeastProtection implements Listener {
 
     @EventHandler
     public void onBlockExplosion(BlockExplodeEvent e){
-        if(!(HG.INSTANCE.getGameStateManager().getCurrentGameState() instanceof IngameState))return;
-        Feast feast = ((IngameState) HG.INSTANCE.getGameStateManager().getCurrentGameState()).getTimer().getFeast();
+        if(!(SpeedHG.INSTANCE.getGameStateManager().getCurrentGameState() instanceof IngameState))return;
+        Feast feast = ((IngameState) SpeedHG.INSTANCE.getGameStateManager().getCurrentGameState()).getTimer().getFeast();
         if(Feast.isAnnounced() && !Feast.isFeast()) {
             for (Block b : feast.getBlocks()) {
                 e.blockList().remove(b);
@@ -28,8 +28,8 @@ public class FeastProtection implements Listener {
 
     @EventHandler
     public void onExplosion(EntityExplodeEvent e){
-        if(!(HG.INSTANCE.getGameStateManager().getCurrentGameState() instanceof IngameState))return;
-        Feast feast = ((IngameState) HG.INSTANCE.getGameStateManager().getCurrentGameState()).getTimer().getFeast();
+        if(!(SpeedHG.INSTANCE.getGameStateManager().getCurrentGameState() instanceof IngameState))return;
+        Feast feast = ((IngameState) SpeedHG.INSTANCE.getGameStateManager().getCurrentGameState()).getTimer().getFeast();
         if(Feast.isAnnounced() && !Feast.isFeast()) {
             for (Block b : feast.getBlocks()) {
                 e.blockList().remove(b);
@@ -39,7 +39,7 @@ public class FeastProtection implements Listener {
 
     @EventHandler
     public void onBlockBreak(BlockBreakEvent e){
-        GameState currentGameState = HG.INSTANCE.getGameStateManager().getCurrentGameState();
+        GameState currentGameState = SpeedHG.INSTANCE.getGameStateManager().getCurrentGameState();
         if(currentGameState instanceof IngameState){
             if(Feast.isAnnounced() && !Feast.isFeast()){
                 Feast feast = ((IngameState) currentGameState).getTimer().getFeast();
@@ -52,7 +52,7 @@ public class FeastProtection implements Listener {
 
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent e){
-        GameState currentGameState = HG.INSTANCE.getGameStateManager().getCurrentGameState();
+        GameState currentGameState = SpeedHG.INSTANCE.getGameStateManager().getCurrentGameState();
         if(currentGameState instanceof IngameState){
             if(Feast.isAnnounced() && !Feast.isFeast()){
                 Feast feast = ((IngameState) currentGameState).getTimer().getFeast();

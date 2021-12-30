@@ -4,7 +4,7 @@ package de.amin.kit.impl.gladiator;
 
 import de.amin.gamestates.GameStateManager;
 import de.amin.gamestates.IngameState;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitManager;
 import de.amin.kit.KitSetting;
@@ -26,15 +26,15 @@ import java.util.ArrayList;
 
 public class GladiatorKit extends Kit implements Listener {
 
-    private KitManager kitManager;
-    private GameStateManager gameStateManager;
-    private KitSetting width;
-    private KitSetting length;
-    private KitSetting height;
+    private final KitManager kitManager;
+    private final GameStateManager gameStateManager;
+    private final KitSetting width;
+    private final KitSetting length;
+    private final KitSetting height;
 
     public GladiatorKit() {
-        kitManager = HG.INSTANCE.getKitManager();
-        gameStateManager = HG.INSTANCE.getGameStateManager();
+        kitManager = SpeedHG.INSTANCE.getKitManager();
+        gameStateManager = SpeedHG.INSTANCE.getGameStateManager();
 
         width = new KitSetting(this, "width", 23, 1, 100);
         length = new KitSetting(this, "length", 23, 1, 100);
@@ -77,7 +77,7 @@ public class GladiatorKit extends Kit implements Listener {
         if (!(gameStateManager.getCurrentGameState() instanceof IngameState)) return;
         Player player = e.getPlayer();
         Player rightClicked = (Player) e.getRightClicked();
-        if(!HG.INSTANCE.getPlayers().contains(rightClicked)) return;
+        if(!SpeedHG.INSTANCE.getPlayers().contains(rightClicked)) return;
         if (!(kitManager.getKitHashMap().get(player.getName()) instanceof GladiatorKit)) return;
         if (player.getItemInHand() == null || !player.getItemInHand().getType().equals(Material.IRON_FENCE) || !player.getItemInHand().getItemMeta().spigot().isUnbreakable())
             return;
@@ -131,7 +131,7 @@ public class GladiatorKit extends Kit implements Listener {
     public void onDisconnect(PlayerQuitEvent e) {
         for (Gladiator g : Gladiator.getGladiators()) {
             if (g.getPlayers().contains(e.getPlayer().getName())) {
-                Bukkit.getScheduler().scheduleSyncDelayedTask(HG.INSTANCE, new Runnable() {
+                Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedHG.INSTANCE, new Runnable() {
                     @Override
                     public void run() {
                         g.end();

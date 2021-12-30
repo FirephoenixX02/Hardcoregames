@@ -1,7 +1,7 @@
 package de.amin.kit.impl;
 
 import de.amin.gamestates.IngameState;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitSetting;
 import de.amin.utils.ItemBuilder;
@@ -46,13 +46,13 @@ public class SwitcherKit extends Kit implements Listener {
 
     @EventHandler
     public void onSnowballHit(EntityDamageByEntityEvent e){
-        if(!(HG.INSTANCE.getGameStateManager().getCurrentGameState() instanceof IngameState))return;
+        if(!(SpeedHG.INSTANCE.getGameStateManager().getCurrentGameState() instanceof IngameState))return;
        if(!(e.getDamager() instanceof Projectile)) return;
        Projectile projectile = (Projectile) e.getDamager();
        if(!e.getDamager().getType().equals(EntityType.SNOWBALL))return;
        if(!(projectile.getShooter() instanceof Player))return;
        Player shooter = (Player) projectile.getShooter();
-       if(!(HG.INSTANCE.getKitManager().getKitHashMap().get(shooter.getName()) instanceof SwitcherKit))return;
+       if(!(SpeedHG.INSTANCE.getKitManager().getKitHashMap().get(shooter.getName()) instanceof SwitcherKit))return;
        Entity hitEntity = e.getEntity();
        Location temp = shooter.getLocation();
        shooter.teleport(hitEntity.getLocation());

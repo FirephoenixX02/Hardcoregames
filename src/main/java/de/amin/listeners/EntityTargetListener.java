@@ -1,7 +1,7 @@
 package de.amin.listeners;
 
 import de.amin.gamestates.IngameState;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import org.bukkit.entity.Monster;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -12,7 +12,7 @@ public class EntityTargetListener implements Listener {
 
     @EventHandler
     public void onTarget(EntityTargetLivingEntityEvent evt){
-        if((HG.INSTANCE.getGameStateManager().getCurrentGameState() instanceof IngameState))return;
+        if((SpeedHG.INSTANCE.getGameStateManager().getCurrentGameState() instanceof IngameState))return;
         if (evt.getTarget() instanceof Player) {
             evt.setCancelled(true);
             evt.setTarget(null);

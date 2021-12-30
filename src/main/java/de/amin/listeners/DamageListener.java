@@ -4,7 +4,7 @@ import de.amin.gamestates.EndingState;
 import de.amin.gamestates.GameState;
 import de.amin.gamestates.InvincibilityState;
 import de.amin.gamestates.LobbyState;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -15,7 +15,7 @@ public class DamageListener implements Listener {
     @EventHandler
     public void onDamage(EntityDamageEvent e){
 
-        GameState currentGameState = HG.INSTANCE.getGameStateManager().getCurrentGameState();
+        GameState currentGameState = SpeedHG.INSTANCE.getGameStateManager().getCurrentGameState();
 
         if(currentGameState instanceof LobbyState ||currentGameState instanceof EndingState){
             e.setCancelled(true);
