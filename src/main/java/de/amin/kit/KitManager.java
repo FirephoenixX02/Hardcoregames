@@ -44,11 +44,11 @@ public class KitManager {
         registerKit(new LauncherKit());
         registerKit(new SwitcherKit());
         registerKit(new WormKit());
-        registerKit(new AnchorKit());
+        //registerKit(new AnchorKit());
         registerKit(new DiggerKit());
         registerKit(new HulkKit());
         registerKit(new FiremanKit());
-        registerKit(new MagmaKit());
+        //registerKit(new MagmaKit());
         registerKit(new AchillesKit());
         registerKit(new StomperKit());
         registerKit(new SurpriseKit());
@@ -62,7 +62,7 @@ public class KitManager {
         registerKit(new GladiatorKit());
         registerKit(new MonkKit());
         registerKit(new TankKit());
-        registerKit(new NinjaKit());
+        //registerKit(new NinjaKit());
         registerKit(new GrandpaKit());
         registerKit(new RedstonerKit());
         registerKit(new RevivalKit());
