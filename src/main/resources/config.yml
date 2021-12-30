@@ -6,7 +6,7 @@ database:
   password: " "
 scoreboard:
   title: "§f§lHardcoreGames"
-  ip: "§f§ihardcoregames.hg"
+  ip: "§f§imasterpractise.speedhg"
 game:
   min_players: 2
 timers:
