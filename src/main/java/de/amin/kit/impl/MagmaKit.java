@@ -1,7 +1,7 @@
 
 package de.amin.kit.impl;
 
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitManager;
 import de.amin.kit.KitSetting;
@@ -24,7 +24,7 @@ public class MagmaKit extends Kit implements Listener {
     private KitSetting duration = new KitSetting(this, "duration", 2, 1, 50);
 
     public MagmaKit(){
-        km = HG.INSTANCE.getKitManager();
+        km = SpeedHG.INSTANCE.getKitManager();
     }
 
     @Override

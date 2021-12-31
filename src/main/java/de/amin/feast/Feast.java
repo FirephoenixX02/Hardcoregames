@@ -21,8 +21,6 @@ public class Feast {
     public static boolean isFeast;
     private static boolean isAnnounced;
 
-
-
     private final int xPos;
     private final int yPos;
     private final int zPos;
@@ -46,51 +44,28 @@ public class Feast {
 
         feastLoot = new ArrayList<>();
         feastLoot.add(new ItemStack(Material.DIAMOND_SWORD));
+        feastLoot.add(new ItemStack(Material.IRON_SWORD));
         feastLoot.add(new ItemStack(Material.DIAMOND_BOOTS));
-        feastLoot.add(new ItemStack(Material.DIAMOND_LEGGINGS));
+        feastLoot.add(new ItemStack(Material.IRON_LEGGINGS));
         feastLoot.add(new ItemStack(Material.DIAMOND_CHESTPLATE));
-        feastLoot.add(new ItemStack(Material.DIAMOND_HELMET));
-        feastLoot.add(new ItemStack(Material.MUSHROOM_SOUP));
-        feastLoot.add(new ItemStack(Material.WATER_BUCKET));
+        feastLoot.add(new ItemStack(Material.IRON_HELMET));
+        feastLoot.add(new ItemStack(Material.IRON_INGOT, 4));
+        feastLoot.add(new ItemStack(Material.IRON_AXE));
+        feastLoot.add(new ItemStack(Material.IRON_PICKAXE));
         feastLoot.add(new ItemStack(Material.LAVA_BUCKET));
-        feastLoot.add(new ItemStack(Material.ENDER_PEARL));
-        feastLoot.add(new ItemStack(Material.WEB));
+        feastLoot.add(new ItemStack(Material.FLINT_AND_STEEL));
+        feastLoot.add(new ItemStack(Material.WATER_BUCKET));
+        feastLoot.add(new ItemStack(Material.CACTUS, 16));
+        feastLoot.add(new ItemStack(Material.COBBLE_WALL, 16));
+        feastLoot.add(new ItemStack(Material.PUMPKIN_SEEDS, 16));
 
-        ItemStack strengthPotion = new ItemStack(Material.POTION, (byte) 1);
-        Potion strengthPot = new Potion(1);
-        strengthPot.setSplash(true);
-        strengthPot.setType(PotionType.STRENGTH);
-        strengthPot.apply(strengthPotion);
+        ItemStack speedPotion = new ItemStack(Material.POTION, (byte) 1);
+        Potion speedPot = new Potion(1);
+        speedPot.setSplash(false);
+        speedPot.setType(PotionType.SPEED);
+        speedPot.apply(speedPotion);
 
-        ItemStack poisonPotion = new ItemStack(Material.POTION, (byte) 1);
-        Potion poisonPot = new Potion(1);
-        poisonPot.setSplash(true);
-        poisonPot.setType(PotionType.POISON);
-        poisonPot.apply(poisonPotion);
-
-        ItemStack weaknessPotion = new ItemStack(Material.POTION, (byte) 1);
-        Potion weaknessPot = new Potion(1);
-        weaknessPot.setSplash(true);
-        weaknessPot.setType(PotionType.WEAKNESS);
-        weaknessPot.apply(weaknessPotion);
-
-        ItemStack damagePotion = new ItemStack(Material.POTION, (byte) 1);
-        Potion damagePot = new Potion(1);
-        damagePot.setSplash(true);
-        damagePot.setType(PotionType.INSTANT_DAMAGE);
-        damagePot.apply(damagePotion);
-
-        ItemStack slownessPotion = new ItemStack(Material.POTION, (byte) 1);
-        Potion slownessPot = new Potion(1);
-        slownessPot.setSplash(true);
-        slownessPot.setType(PotionType.SLOWNESS);
-        slownessPot.apply(slownessPotion);
-
-        feastLoot.add(strengthPotion);
-        feastLoot.add(poisonPotion);
-        feastLoot.add(weaknessPotion);
-        feastLoot.add(damagePotion);
-        feastLoot.add(slownessPotion);
+        feastLoot.add(speedPotion);
 
         runFeast();
     }

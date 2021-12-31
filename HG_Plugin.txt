@@ -6,7 +6,7 @@ NieGestorben:
 - Speed - Done
 - Haste - Done
 - MiniFeast (spawnt ab 5min)
-- Feast (Ankündigung: 7:30, Start: 10:00, nur Dia- Schuhe und Brustplatte und Iron- Hose und Helm, Eisenbarren, Diamant/Iron Schwert, Iron- Axt und Spitzhacke, keine Stärke, Speed Pots (Trinken), Stone Wall (16x), Holz Planks (16x), Lava/fns und Wasser, Kürbissamen, Kakteen)
+- Feast (Ankündigung: 7:30, Start: 10:00, nur Dia- Schuhe und Brustplatte und Iron- Hose und Helm, Eisenbarren, Diamant/Iron Schwert, Iron- Axt und Spitzhacke, keine Stärke, Speed Pots (Trinken), Stone Wall (16x), Holz Planks (16x), Lava/fns und Wasser, Kürbissamen, Kakteen) - Mostly Done
 - Border (ab 20min)
 
 LaurinVL:

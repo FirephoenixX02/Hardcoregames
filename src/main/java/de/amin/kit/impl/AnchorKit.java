@@ -1,7 +1,7 @@
 package de.amin.kit.impl;
 
 import de.amin.gamestates.IngameState;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitSetting;
 import de.amin.utils.ItemBuilder;
@@ -49,16 +49,16 @@ public class AnchorKit extends Kit implements Listener {
 
     @EventHandler
     public void onHit(EntityDamageByEntityEvent e){
-        if(!(HG.INSTANCE.getGameStateManager().getCurrentGameState() instanceof IngameState))return;
+        if(!(SpeedHG.INSTANCE.getGameStateManager().getCurrentGameState() instanceof IngameState))return;
         Entity damager = e.getDamager();
         Entity target = e.getEntity();
-        HashMap<String, Kit> kits = HG.INSTANCE.getKitManager().getKitHashMap();
+        HashMap<String, Kit> kits = SpeedHG.INSTANCE.getKitManager().getKitHashMap();
         if(kits.get(damager.getName()) instanceof AnchorKit || kits.get(target.getName()) instanceof AnchorKit){
-            Bukkit.getScheduler().scheduleSyncDelayedTask(HG.INSTANCE, new Runnable() {
+            Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedHG.INSTANCE, new Runnable() {
                 @Override
                 public void run() {
                     target.setVelocity(new Vector(0,0,0));
-                    for(Player p : HG.INSTANCE.getPlayers()){
+                    for(Player p : SpeedHG.INSTANCE.getPlayers()){
                         p.playSound(target.getLocation(), Sound.ANVIL_LAND, 1.0F, 1.0F);
                     }
                 }

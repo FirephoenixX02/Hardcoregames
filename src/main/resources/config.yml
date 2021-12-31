@@ -8,7 +8,7 @@ scoreboard:
   title: "§f§lHardcoreGames"
   ip: "§f§imasterpractise.speedhg"
 game:
-  min_players: 2
+  min_players: 1
 timers:
   pregame: 180
   invincibility: 120

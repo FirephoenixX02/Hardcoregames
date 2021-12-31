@@ -1,7 +1,7 @@
 name: Hardcoregames
 version: ${project.version}
 load: STARTUP
-main: de.amin.hardcoregames.HG
+main: de.amin.hardcoregames.SpeedHG
 commands:
   heal:
   up:

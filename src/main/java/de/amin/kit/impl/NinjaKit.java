@@ -4,7 +4,7 @@ package de.amin.kit.impl;
 
 import de.amin.gamestates.GameStateManager;
 import de.amin.gamestates.IngameState;
-import de.amin.hardcoregames.HG;
+import de.amin.hardcoregames.SpeedHG;
 import de.amin.kit.Kit;
 import de.amin.kit.KitManager;
 import de.amin.kit.KitSetting;
@@ -32,8 +32,8 @@ public class NinjaKit extends Kit implements Listener {
     private HashMap<String, String> ninjas;
 
     public NinjaKit() {
-        kitManager = HG.INSTANCE.getKitManager();
-        gameStateManager = HG.INSTANCE.getGameStateManager();
+        kitManager = SpeedHG.INSTANCE.getKitManager();
+        gameStateManager = SpeedHG.INSTANCE.getGameStateManager();
         ninjas = new HashMap<>();
 
     }
@@ -78,7 +78,7 @@ public class NinjaKit extends Kit implements Listener {
 
 
             ninjas.put(player.getName(), target.getName());
-            Bukkit.getScheduler().scheduleSyncDelayedTask(HG.INSTANCE, () -> {
+            Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedHG.INSTANCE, () -> {
                 ninjas.remove(player.getName());
             }, (long) (time.getValue() * 20L));
         }
